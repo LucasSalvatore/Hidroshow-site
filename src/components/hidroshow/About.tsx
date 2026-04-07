@@ -28,14 +28,22 @@ export default function About() {
             <div className="p-6 rounded-2xl bg-background shadow-sm border border-border">
               <h4 className="font-display font-bold text-sm text-primary mb-4">👥 THE TEAM</h4>
               <div className="flex flex-wrap gap-3">
-                {["Pedro Justa", "Shery Imran", "Joshua Bracero", "Rocco Voglino", "Noah Mazard"].map(name => (
+                {[
+                  { name: "Pedro Justa", role: "CEO" },
+                  { name: "Shery Imran", role: "Co-CEO" },
+                  { name: "Joshua Bracero", role: "CFO & CMO" },
+                  { name: "Noah Mazard", role: "COO" },
+                ].map(({ name, role }) => (
                   <div key={name} className="flex items-center gap-2 px-3 py-2 rounded-full bg-secondary">
                     <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
                       <span className="font-display font-bold text-[10px] text-primary">
                         {name.split(" ").map(n => n[0]).join("")}
                       </span>
                     </div>
-                    <span className="text-foreground text-xs font-medium">{name}</span>
+                    <div className="flex flex-col">
+                      <span className="text-foreground text-xs font-medium">{name}</span>
+                      <span className="text-muted-foreground text-[10px]">{role}</span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -63,7 +71,7 @@ export default function About() {
             ))}
 
             <div className="mt-6 rounded-2xl overflow-hidden shadow-lg">
-              <img src={crowdImg} alt="Festival crowd" loading="lazy" className="w-full h-48 object-cover" />
+              <img src={crowdImg} alt="Festival crowd" loading="lazy" decoding="async" className="w-full h-64 md:h-80 object-cover" />
             </div>
           </AnimSection>
         </div>

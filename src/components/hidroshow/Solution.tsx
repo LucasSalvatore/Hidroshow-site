@@ -37,7 +37,7 @@ export default function Solution() {
 
           <AnimSection delay={0.2}>
             <div className="rounded-3xl overflow-hidden shadow-xl">
-              <img src={stationImg} alt="Hidroshow stations at outdoor event" loading="lazy" className="w-full h-auto object-cover" />
+              <img src={stationImg} alt="Hidroshow stations at outdoor event" loading="eager" decoding="async" className="w-full h-auto object-cover" />
             </div>
             <div className="grid grid-cols-4 gap-3 mt-6">
               {[["780mm", "Width"], ["1425mm", "Height"], ["500L", "Capacity"], ["4 Taps", "Per Unit"]].map(([val, label]) => (

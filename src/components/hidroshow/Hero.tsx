@@ -73,7 +73,7 @@ export default function Hero() {
           {/* Right - Image */}
           <div className="hidden lg:block relative">
             <div className="rounded-3xl overflow-hidden shadow-2xl">
-              <img src={heroImg} alt="Festival crowd at sunset" width={1920} height={1080} className="w-full h-auto object-cover" />
+              <img src={heroImg} alt="Festival crowd at sunset" className="w-full h-auto object-cover" fetchPriority="high" loading="eager" decoding="async" />
             </div>
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2">
               <span className="inline-block px-4 py-2 rounded-full bg-success text-primary-foreground font-display font-bold text-xs tracking-wider shadow-lg" style={{ background: "hsl(152,69%,31%)" }}>
