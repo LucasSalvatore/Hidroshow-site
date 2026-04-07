@@ -98,7 +98,7 @@
     @apply font-extrabold tracking-tight;
   }
   .heading-section {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
     @apply font-bold text-3xl md:text-4xl;
   }
   .btn-primary {
