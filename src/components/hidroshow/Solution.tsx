@@ -70,6 +70,11 @@ export default function Solution() {
             </div>
           </div>
         </AnimSection>
+
+        {/* 3D Station Viewer */}
+        <AnimSection>
+          <StationViewer />
+        </AnimSection>
       </div>
     </section>
   );
