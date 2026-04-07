@@ -20,7 +20,7 @@ function StationModel() {
 
   return (
     <Center>
-      <mesh ref={meshRef} geometry={geometry} scale={[scale, scale, scale]} castShadow receiveShadow>
+      <mesh ref={meshRef} geometry={geometry} scale={[scale, scale, scale]} rotation={[-Math.PI / 2, 0, 0]} castShadow receiveShadow>
         <meshStandardMaterial color="hsl(217, 91%, 60%)" metalness={0.3} roughness={0.4} />
       </mesh>
     </Center>

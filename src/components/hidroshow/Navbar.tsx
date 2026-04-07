@@ -37,8 +37,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
           style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <img src={logoImg} alt="Hidroshow logo" className="h-10 w-auto object-contain" />
-          <span className="font-display font-extrabold text-lg tracking-tight text-foreground">HIDROSHOW</span>
+          <img src={logoImg} alt="Hidroshow logo" className="h-9 w-auto object-contain" />
         </div>
 
         {/* Desktop nav */}

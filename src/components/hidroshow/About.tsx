@@ -1,5 +1,6 @@
 import AnimSection from "./AnimSection";
 import crowdImg from "@/assets/crowd-festival.jpg";
+import teamImg from "@/assets/team-photo.jpg";
 
 export default function About() {
   return (
@@ -46,6 +47,24 @@ export default function About() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Team photo */}
+              <div className="mt-5 rounded-2xl overflow-hidden shadow-md">
+                <img src={teamImg} alt="Hidroshow founding team at the 2026 Social Entrepreneurship Poster Competition" loading="lazy" decoding="async" className="w-full h-auto object-cover" />
+              </div>
+            </div>
+
+            {/* Achievement badge */}
+            <div className="mt-6 p-5 rounded-2xl border-2 border-amber/30 bg-amber/5">
+              <div className="flex items-start gap-3">
+                <span className="text-3xl">🏆</span>
+                <div>
+                  <h4 className="font-display font-bold text-foreground text-sm">3rd Place — Social Entrepreneurship Poster Competition</h4>
+                  <p className="text-muted-foreground text-xs mt-1 leading-relaxed">
+                    This business concept won 3rd place and received approval from faculty members at Montclair State University's 2026 Social Entrepreneurship Poster Competition.
+                  </p>
+                </div>
               </div>
             </div>
           </AnimSection>
