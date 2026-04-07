@@ -94,7 +94,7 @@
 
 @layer components {
   .heading-display {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
     @apply font-extrabold tracking-tight;
   }
   .heading-section {
