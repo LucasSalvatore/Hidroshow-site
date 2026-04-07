@@ -39,9 +39,10 @@ export default function Products() {
           </p>
         </AnimSection>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* Horizontal scroll on mobile, grid on desktop */}
+        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:overflow-visible sm:snap-none sm:pb-0 mb-16 -mx-4 px-4 sm:mx-0 sm:px-0">
           {products.map((p, i) => (
-            <AnimSection key={i} delay={i * 0.1}>
+            <AnimSection key={i} delay={i * 0.1} className="min-w-[280px] snap-center sm:min-w-0">
               <div className="rounded-2xl bg-background shadow-sm border border-border overflow-hidden card-hover h-full flex flex-col">
                 <div className="p-6 text-center" style={{ background: p.color + "0a" }}>
                   <span className="inline-block px-3 py-1 rounded-full text-[10px] font-display font-bold tracking-widest mb-3"

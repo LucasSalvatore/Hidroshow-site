@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import logoImg from "@/assets/hidroshow-logo.png";
 
 const NAV_LINKS = ["About", "Problem", "Solution", "Products", "Contact"];
 
@@ -36,15 +37,7 @@ export default function Navbar({ activeSection }: NavbarProps) {
           style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         >
-          <svg viewBox="0 0 32 44" width="28" height="38">
-            <defs>
-              <linearGradient id="navdrop" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="hsl(217,91%,60%)" />
-                <stop offset="100%" stopColor="hsl(224,76%,48%)" />
-              </linearGradient>
-            </defs>
-            <path d="M16 1 C16 1 1 17 1 27 C1 36.4 7.8 43 16 43 C24.2 43 31 36.4 31 27 C31 17 16 1 16 1Z" fill="url(#navdrop)" />
-          </svg>
+          <img src={logoImg} alt="Hidroshow logo" className="h-10 w-auto object-contain" />
           <span className="font-display font-extrabold text-lg tracking-tight text-foreground">HIDROSHOW</span>
         </div>
 
