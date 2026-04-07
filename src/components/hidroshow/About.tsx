@@ -71,7 +71,7 @@ export default function About() {
             ))}
 
             <div className="mt-6 rounded-2xl overflow-hidden shadow-lg">
-              <img src={crowdImg} alt="Festival crowd" loading="lazy" className="w-full h-48 object-cover" />
+              <img src={crowdImg} alt="Festival crowd" loading="lazy" decoding="async" className="w-full h-64 md:h-80 object-cover" />
             </div>
           </AnimSection>
         </div>
