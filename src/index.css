@@ -103,7 +103,7 @@
   }
   .btn-primary {
     @apply inline-block px-8 py-3.5 rounded-full font-bold text-sm tracking-wider bg-primary text-primary-foreground shadow-lg transition-all duration-200;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
     box-shadow: 0 8px 25px hsl(var(--primary) / 0.35);
   }
   .btn-primary:hover {
