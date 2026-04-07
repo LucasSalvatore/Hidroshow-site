@@ -139,7 +139,7 @@
     @apply font-extrabold text-primary;
   }
   .badge-label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
     @apply inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest bg-secondary text-primary;
   }
 }
