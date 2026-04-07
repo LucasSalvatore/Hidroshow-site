@@ -1,4 +1,5 @@
 import AnimSection from "./AnimSection";
+import StationViewer from "./StationViewer";
 import stationImg from "@/assets/stations-outdoor.jpg";
 
 export default function Solution() {
@@ -68,6 +69,11 @@ export default function Solution() {
               ))}
             </div>
           </div>
+        </AnimSection>
+
+        {/* 3D Station Viewer */}
+        <AnimSection>
+          <StationViewer />
         </AnimSection>
       </div>
     </section>

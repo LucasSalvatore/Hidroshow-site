@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -88,22 +88,22 @@
     font-family: 'Inter', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
   }
 }
 
 @layer components {
   .heading-display {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
     @apply font-extrabold tracking-tight;
   }
   .heading-section {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
     @apply font-bold text-3xl md:text-4xl;
   }
   .btn-primary {
     @apply inline-block px-8 py-3.5 rounded-full font-bold text-sm tracking-wider bg-primary text-primary-foreground shadow-lg transition-all duration-200;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
     box-shadow: 0 8px 25px hsl(var(--primary) / 0.35);
   }
   .btn-primary:hover {
@@ -112,7 +112,7 @@
   }
   .btn-outline-hero {
     @apply inline-block px-8 py-3.5 rounded-full font-bold text-sm tracking-wider bg-background text-primary border-2 border-primary transition-all duration-200;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
   }
   .btn-outline-hero:hover {
     @apply bg-primary text-primary-foreground;
@@ -135,11 +135,11 @@
     background: hsl(var(--primary) / 0.08);
   }
   .stat-number {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
     @apply font-extrabold text-primary;
   }
   .badge-label {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lexend', sans-serif;
     @apply inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest bg-secondary text-primary;
   }
 }
