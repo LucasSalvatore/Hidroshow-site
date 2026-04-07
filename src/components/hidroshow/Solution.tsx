@@ -1,4 +1,5 @@
 import AnimSection from "./AnimSection";
+import StationViewer from "./StationViewer";
 import stationImg from "@/assets/stations-outdoor.jpg";
 
 export default function Solution() {
