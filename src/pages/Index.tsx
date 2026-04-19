@@ -5,6 +5,7 @@ import About from "@/components/hidroshow/About";
 import Problem from "@/components/hidroshow/Problem";
 import Solution from "@/components/hidroshow/Solution";
 import Products from "@/components/hidroshow/Products";
+import Advertisement from "@/components/hidroshow/Advertisement";
 import SWOT from "@/components/hidroshow/SWOT";
 import Contact from "@/components/hidroshow/Contact";
 import Footer from "@/components/hidroshow/Footer";
@@ -40,6 +41,7 @@ export default function Index() {
       <About />
       <Problem />
       <Solution />
+      <Advertisement />
       <Products />
       <SWOT />
       <Contact />
