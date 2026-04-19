@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -84,12 +84,19 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Lexend', sans-serif;
+    letter-spacing: -0.02em;
   }
+  p { letter-spacing: -0.005em; }
+  ::selection { background: hsl(var(--primary) / 0.2); color: hsl(var(--primary-dark)); }
 }
 
 @layer components {
@@ -99,7 +106,8 @@
   }
   .heading-section {
     font-family: 'Lexend', sans-serif;
-    @apply font-bold text-3xl md:text-4xl;
+    @apply font-bold text-3xl md:text-4xl lg:text-5xl;
+    letter-spacing: -0.03em;
   }
   .btn-primary {
     @apply inline-block px-8 py-3.5 rounded-full font-bold text-sm tracking-wider bg-primary text-primary-foreground shadow-lg transition-all duration-200;
@@ -118,7 +126,15 @@
     @apply bg-primary text-primary-foreground;
   }
   .section-padding {
-    @apply py-20 md:py-28 px-4 md:px-8;
+    @apply py-24 md:py-32 lg:py-40 px-4 md:px-8;
+  }
+  .section-divider {
+    @apply relative;
+  }
+  .section-divider::before {
+    content: '';
+    @apply absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px;
+    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
   }
   .section-light {
     background: hsl(var(--section-light));
@@ -163,4 +179,24 @@ html {
 }
 .animate-pulse-water {
   animation: pulse-water 2s ease-in-out infinite;
+}
+
+/* Premium scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: hsl(var(--muted)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--primary) / 0.4); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.7); }
+
+/* Subtle section transition gradient */
+.section-fade-top {
+  position: relative;
+}
+.section-fade-top::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, hsl(var(--background)), transparent);
+  pointer-events: none;
+  z-index: 1;
 }
