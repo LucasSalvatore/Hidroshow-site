@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import festivalImg from "@/assets/hero-festival.jpg";
 import dropImg from "@/assets/hero-waterdrop.jpg";
+import festivalImg from "@/assets/hero-festival.jpg";
 import AnimSection from "./AnimSection";
 import { useInView } from "./AnimSection";
 
@@ -29,74 +29,26 @@ export default function SystemCapacity() {
   const attendees = useCountUp(50000, inView);
   const foodGrade = useCountUp(100, inView);
 
-  // Manual toggle: 'auto' (crossfade) | 'festival' | 'drop'
-  const [bgMode, setBgMode] = useState<"auto" | "festival" | "drop">("auto");
-  const [paused, setPaused] = useState(false);
-
-  const scrim = "linear-gradient(90deg, hsl(198 45% 14% / 0.92) 0%, hsl(198 45% 14% / 0.72) 45%, hsl(198 45% 14% / 0.5) 100%)";
-
   return (
     <section
       id="capacity"
       ref={ref}
-      className={`section-padding relative overflow-hidden capacity-alt-bg capacity-mode-${bgMode}${paused ? " capacity-paused" : ""}`}
+      className="section-padding relative overflow-hidden"
       style={{ background: "hsl(var(--reservoir))", color: "hsl(var(--reservoir-foreground))" }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node)) setPaused(false);
-      }}
     >
-      {/* Alternating background layers: festival <-> water drop */}
+      {/* Static water-drop backdrop */}
       <div
-        className="capacity-alt-layer capacity-alt-a"
         aria-hidden
-        style={{ backgroundImage: `${scrim}, url(${festivalImg})` }}
-      />
-      <div
-        className="capacity-alt-layer capacity-alt-b"
-        aria-hidden
-        style={{ backgroundImage: `${scrim}, url(${dropImg})` }}
-      />
-
-      {/* Manual background toggle */}
-      <div
-        className="absolute top-4 right-4 z-20 flex items-center gap-1 p-1 rounded-sm"
-        role="radiogroup"
-        aria-label="Section background"
+        className="absolute inset-0 z-0"
         style={{
-          background: "hsl(198 45% 8% / 0.5)",
-          border: "1px solid hsl(38 24% 92% / 0.2)",
-          backdropFilter: "blur(6px)",
+          backgroundImage: `linear-gradient(90deg, hsl(198 45% 14% / 0.94) 0%, hsl(198 45% 14% / 0.78) 50%, hsl(198 45% 14% / 0.6) 100%), url(${dropImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
-      >
-        {([
-          { id: "auto", label: "Auto" },
-          { id: "festival", label: "Festival" },
-          { id: "drop", label: "Drop" },
-        ] as const).map((opt) => (
-          <button
-            key={opt.id}
-            type="button"
-            role="radio"
-            aria-checked={bgMode === opt.id}
-            onClick={() => setBgMode(opt.id)}
-            className="font-mono-num text-[10px] tracking-[0.15em] uppercase px-2.5 py-1 rounded-sm transition-colors"
-            style={{
-              background: bgMode === opt.id ? "hsl(var(--tap))" : "transparent",
-              color:
-                bgMode === opt.id
-                  ? "hsl(var(--reservoir-foreground))"
-                  : "hsl(38 24% 92% / 0.7)",
-            }}
-          >
-            {opt.label}
-          </button>
-        ))}
-      </div>
+      />
 
       <div className="relative z-10" style={{ maxWidth: 1200, margin: "0 auto" }}>
+
         <AnimSection className="flex flex-wrap items-center justify-between gap-4 mb-10">
           <div className="flex items-center gap-3">
             <span
@@ -130,41 +82,30 @@ export default function SystemCapacity() {
           <div className="gauge-ticks gauge-ticks-on-dark mb-10" />
         </AnimSection>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px" style={{ background: "hsl(38 24% 92% / 0.12)" }}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 md:gap-x-12">
           {[
             { value: tank.toLocaleString(), unit: "L", label: "Per-station tank capacity" },
             { value: attendees.toLocaleString(), unit: "+", label: "Attendees served per deployment" },
             { value: "03", unit: "", label: "UN SDGs aligned (SDG 6 · 12 · 13)" },
             { value: foodGrade.toString(), unit: "%", label: "Food-grade water system" },
           ].map((s, i) => (
-            <AnimSection
-              key={i}
-              delay={0.15 + i * 0.08}
-              className="stat-card p-6 md:p-8"
-            >
+            <AnimSection key={i} delay={0.15 + i * 0.08}>
               <div
-                className="h-full"
-                style={{
-                  background: "hsl(var(--reservoir))",
-                  padding: "8px 4px",
-                }}
+                className="pt-5"
+                style={{ borderTop: "1px solid hsl(var(--tap) / 0.55)" }}
               >
-                <div className="flex items-baseline gap-1 mb-4">
-                  <span className="font-mono-num tabular-nums text-3xl md:text-5xl font-semibold text-[hsl(var(--reservoir-foreground))]">
+                <div className="flex items-baseline gap-1">
+                  <span className="font-mono-num tabular-nums text-4xl md:text-5xl font-semibold text-[hsl(var(--reservoir-foreground))] leading-none">
                     {s.value}
                   </span>
                   {s.unit && (
-                    <span className="font-mono-num text-lg md:text-2xl font-medium text-[hsl(var(--tap))]">
+                    <span className="font-mono-num text-xl md:text-2xl font-medium text-[hsl(var(--tap))]">
                       {s.unit}
                     </span>
                   )}
                 </div>
-                <div
-                  className="h-px w-10 mb-3"
-                  style={{ background: "hsl(var(--tap))" }}
-                />
                 <p
-                  className="font-mono-num text-[10px] md:text-[11px] uppercase tracking-[0.2em]"
+                  className="font-mono-num mt-4 text-[10px] md:text-[11px] uppercase tracking-[0.2em]"
                   style={{ color: "hsl(38 24% 92% / 0.65)" }}
                 >
                   {s.label}
@@ -173,6 +114,29 @@ export default function SystemCapacity() {
             </AnimSection>
           ))}
         </div>
+
+        {/* Festival image strip — field context, full-bleed within container */}
+        <AnimSection delay={0.4} className="mt-20">
+          <div className="relative overflow-hidden" style={{ borderRadius: 2 }}>
+            <img
+              src={festivalImg}
+              alt="Festival crowd at a live event served by Hidroshow stations"
+              loading="lazy"
+              className="w-full h-40 md:h-56 lg:h-64 object-cover"
+              style={{ filter: "saturate(0.9)" }}
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(90deg, hsl(198 45% 14% / 0.65) 0%, hsl(198 45% 14% / 0.15) 45%, hsl(198 45% 14% / 0.55) 100%)",
+              }}
+            />
+            <div className="absolute inset-0 flex items-end p-5 md:p-7">
+              <span className="badge-label badge-on-dark">DEPLOYED · EVENTS NATIONWIDE</span>
+            </div>
+          </div>
+        </AnimSection>
       </div>
     </section>
   );
