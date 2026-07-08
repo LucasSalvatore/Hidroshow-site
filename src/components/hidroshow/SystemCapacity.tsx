@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import heroImg from "@/assets/hero-festival.jpg";
 import AnimSection from "./AnimSection";
 import { useInView } from "./AnimSection";
 
@@ -31,10 +32,17 @@ export default function SystemCapacity() {
     <section
       id="capacity"
       ref={ref}
-      className="section-padding"
+      className="section-padding relative overflow-hidden capacity-alt-bg"
       style={{ background: "hsl(var(--reservoir))", color: "hsl(var(--reservoir-foreground))" }}
     >
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      {/* Alternating background layers: gradient <-> image glow */}
+      <div className="capacity-alt-layer capacity-alt-gradient" aria-hidden />
+      <div
+        className="capacity-alt-layer capacity-alt-image"
+        aria-hidden
+        style={{ backgroundImage: `linear-gradient(90deg, hsl(198 45% 14% / 0.92) 0%, hsl(198 45% 14% / 0.75) 40%, hsl(198 45% 14% / 0.55) 100%), url(${heroImg})` }}
+      />
+      <div className="relative z-10" style={{ maxWidth: 1200, margin: "0 auto" }}>
         <AnimSection className="flex flex-wrap items-center justify-between gap-4 mb-10">
           <div className="flex items-center gap-3">
             <span

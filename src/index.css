@@ -239,6 +239,42 @@ html { scroll-behavior: smooth; }
 }
 .animate-fade-up { animation: fade-up 0.6s ease-out both; }
 
+/* ===== SystemCapacity alternating background ===== */
+.capacity-alt-bg { isolation: isolate; }
+.capacity-alt-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  will-change: opacity;
+}
+.capacity-alt-gradient {
+  background:
+    radial-gradient(ellipse at 15% 0%, hsl(192 68% 38% / 0.35), transparent 55%),
+    radial-gradient(ellipse at 85% 100%, hsl(198 55% 22% / 0.6), transparent 60%),
+    linear-gradient(135deg, hsl(198 50% 10%) 0%, hsl(198 45% 14%) 45%, hsl(198 55% 18%) 100%);
+  animation: capacity-alt-a 14s ease-in-out infinite;
+}
+.capacity-alt-image {
+  animation: capacity-alt-b 14s ease-in-out infinite;
+}
+@keyframes capacity-alt-a {
+  0%, 45%   { opacity: 1; }
+  55%, 95%  { opacity: 0; }
+  100%      { opacity: 1; }
+}
+@keyframes capacity-alt-b {
+  0%, 45%   { opacity: 0; }
+  55%, 95%  { opacity: 1; }
+  100%      { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .capacity-alt-gradient { opacity: 1; animation: none; }
+  .capacity-alt-image { opacity: 0; animation: none; }
+}
+
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: hsl(var(--secondary)); }
