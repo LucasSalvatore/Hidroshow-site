@@ -120,8 +120,8 @@ export default function StationViewer() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
         {venues.map((v) => (
           <div key={v.size} className="p-5 rounded-2xl bg-background shadow-sm border-2 card-hover text-center" style={{ borderColor: v.color + "40" }}>
-            <span className="text-3xl">{v.icon}</span>
-            <h4 className="font-display font-bold text-sm mt-2" style={{ color: v.color }}>{v.size}</h4>
+            <v.Icon className="w-7 h-7 mx-auto" style={{ color: v.color }} />
+            <h4 className="font-display font-bold text-sm mt-3" style={{ color: v.color }}>{v.size}</h4>
             <p className="text-muted-foreground text-[10px] mt-0.5">{v.dims}</p>
             <p className="text-muted-foreground text-xs mt-1">{v.capacity}</p>
             <div className="mt-3 space-y-1">
