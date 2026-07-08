@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import AnimSection, { useInView } from "./AnimSection";
 import blueprintImg from "@/assets/station-blueprint.jpg";
+import concertBg from "@/assets/festival-panorama.jpg.asset.json";
 import fieldImg from "@/assets/stations-outdoor.jpg";
 
 // three.js is ~800KB — load the 3D viewer only when this section nears the viewport.
@@ -63,17 +64,41 @@ export default function Station() {
         {/* Blueprint + spec list */}
         <div className="grid lg:grid-cols-2 gap-6 mb-16 items-stretch">
           <AnimSection className="h-full">
-            {/* Blueprint drawing sits on a light panel to stay legible */}
-            <div className="h-full p-6 md:p-8 flex flex-col" style={{ borderRadius: 3, background: "hsl(38 28% 94%)" }}>
-              <span className="badge-label mb-5 inline-block">TECHNICAL DRAWING</span>
-              <div className="flex-1 flex items-center justify-center">
-                <img
-                  src={blueprintImg}
-                  alt="Hidroshow station technical drawing showing front and side elevations with dimensions"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-auto object-contain"
-                />
+            {/* Blueprint drawing over a night-concert backdrop */}
+            <div
+              className="relative h-full p-6 md:p-8 flex flex-col overflow-hidden"
+              style={{ borderRadius: 3, border: "1px solid hsl(var(--tap) / 0.25)" }}
+            >
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  backgroundImage: `url(${concertBg.url})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  filter: "brightness(0.55) saturate(1.05)",
+                }}
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, hsl(198 45% 8% / 0.75) 0%, hsl(198 45% 10% / 0.7) 55%, hsl(198 45% 8% / 0.85) 100%)",
+                }}
+              />
+              <div className="relative z-10 flex flex-col h-full">
+                <span className="badge-label badge-on-dark mb-5 inline-block">TECHNICAL DRAWING</span>
+                <div className="flex-1 flex items-center justify-center">
+                  <img
+                    src={blueprintImg}
+                    alt="Hidroshow station technical drawing showing front and side elevations with dimensions"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto object-contain"
+                    style={{ filter: "invert(1) hue-rotate(180deg) brightness(1.1) contrast(1.05)", mixBlendMode: "screen" }}
+                  />
+                </div>
               </div>
             </div>
           </AnimSection>
