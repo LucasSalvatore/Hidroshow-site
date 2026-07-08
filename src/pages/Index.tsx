@@ -1,7 +1,6 @@
 import Navbar from "@/components/hidroshow/Navbar";
 import Hero from "@/components/hidroshow/Hero";
 import SystemCapacity from "@/components/hidroshow/SystemCapacity";
-import Advertisement from "@/components/hidroshow/Advertisement";
 import Footer from "@/components/hidroshow/Footer";
 
 export default function Index() {
@@ -10,7 +9,6 @@ export default function Index() {
       <Navbar />
       <Hero />
       <SystemCapacity />
-      <Advertisement />
       <Footer />
     </div>
   );
