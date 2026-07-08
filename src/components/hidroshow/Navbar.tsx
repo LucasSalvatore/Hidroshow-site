@@ -37,8 +37,11 @@ export default function Navbar() {
       }}
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "14px 24px" }} className="flex items-center justify-between">
-        <Link to="/" className="flex items-center group" aria-label="HIDROSHOW home">
-          <img src={hidroshowLogo} alt="HIDROSHOW" className="h-9 md:h-10 w-auto object-contain" />
+        <Link to="/" className="flex items-center gap-3 group" aria-label="HIDROSHOW home">
+          <img src={hidroshowLogo} alt="" className="h-14 md:h-16 w-auto object-contain" />
+          <span className="heading-display text-[hsl(var(--reservoir-foreground))] text-xl md:text-2xl tracking-[0.15em]">
+            HIDROSHOW
+          </span>
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
