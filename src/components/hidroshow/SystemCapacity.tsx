@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import heroImg from "@/assets/hero-festival.jpg";
 import AnimSection from "./AnimSection";
 import { useInView } from "./AnimSection";
 
