@@ -58,42 +58,46 @@ export default function About() {
             </div>
           </AnimSection>
 
-          <AnimSection delay={0.15}>
-            <span className="badge-label mb-5 inline-block">TARGET MARKET</span>
-            <h3 className="heading-display text-3xl md:text-4xl text-[hsl(var(--reservoir))] mb-6">Who We Serve</h3>
+          <AnimSection delay={0.15} className="h-full">
+            <div className="flex flex-col h-full">
+              <span className="badge-label mb-5 inline-block">TARGET MARKET</span>
+              <h3 className="heading-display text-3xl md:text-4xl text-[hsl(var(--reservoir))] mb-6">Who We Serve</h3>
 
-            {[
-              { code: "01", title: "Concerts & Music Festivals", desc: "30K–80K+ attendees per event. High heat, high energy, critical hydration demand." },
-              { code: "02", title: "Stadiums & Sports Venues", desc: "Recurring demand, long-term contracts, ideal for the venue partnership model." },
-              { code: "03", title: "Eco-Conscious Organizers", desc: "Events pursuing zero-waste or sustainability certifications." },
-              { code: "04", title: "Corporate & Public Events", desc: "Brand-conscious organizers who value sponsorship visibility." },
-            ].map((item) => (
-              <div key={item.code} className="flex gap-5 mb-3 p-5 bg-card border border-border card-hover" style={{ borderRadius: 3 }}>
-                <span className="font-mono-num text-2xl text-[hsl(var(--tap))] leading-none">{item.code}</span>
-                <div>
-                  <h4 className="heading-display text-base text-[hsl(var(--reservoir))]">{item.title}</h4>
-                  <p className="text-muted-foreground text-sm mt-1 leading-relaxed">{item.desc}</p>
+              <div className="flex flex-col gap-3 flex-1">
+                {[
+                  { code: "01", title: "Concerts & Music Festivals", desc: "30K–80K+ attendees per event. High heat, high energy, critical hydration demand." },
+                  { code: "02", title: "Stadiums & Sports Venues", desc: "Recurring demand, long-term contracts, ideal for the venue partnership model." },
+                  { code: "03", title: "Eco-Conscious Organizers", desc: "Events pursuing zero-waste or sustainability certifications." },
+                  { code: "04", title: "Corporate & Public Events", desc: "Brand-conscious organizers who value sponsorship visibility." },
+                ].map((item) => (
+                  <div key={item.code} className="flex gap-5 p-5 bg-card border border-border card-hover flex-1" style={{ borderRadius: 3 }}>
+                    <span className="font-mono-num text-2xl text-[hsl(var(--tap))] leading-none">{item.code}</span>
+                    <div>
+                      <h4 className="heading-display text-base text-[hsl(var(--reservoir))]">{item.title}</h4>
+                      <p className="text-muted-foreground text-sm mt-1 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+
+                <div className="overflow-hidden border border-border relative flex-1 min-h-[12rem]" style={{ borderRadius: 3 }}>
+                  <img
+                    src={crowdVerticalImg.url}
+                    alt="Festival crowd silhouetted against warm stage lights"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
+                  <div
+                    className="pointer-events-none absolute inset-0"
+                    style={{ background: "linear-gradient(180deg, transparent 55%, hsl(var(--reservoir) / 0.55) 100%)" }}
+                  />
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <span className="badge-label badge-signal mb-2 inline-block">EVENT SCALE</span>
+                    <p className="font-mono-num text-[11px] tracking-[0.22em] uppercase" style={{ color: "hsl(38 24% 96%)" }}>
+                      30K – 80K+ attendees per deployment
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
-
-            <div className="mt-6 overflow-hidden border border-border relative" style={{ borderRadius: 3 }}>
-              <img
-                src={crowdVerticalImg.url}
-                alt="Festival crowd silhouetted against warm stage lights"
-                loading="lazy"
-                decoding="async"
-                className="w-full h-80 md:h-[28rem] lg:h-[32rem] object-cover"
-              />
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{ background: "linear-gradient(180deg, transparent 55%, hsl(var(--reservoir) / 0.55) 100%)" }}
-              />
-              <div className="absolute bottom-5 left-5 right-5">
-                <span className="badge-label badge-signal mb-2 inline-block">EVENT SCALE</span>
-                <p className="font-mono-num text-[11px] tracking-[0.22em] uppercase" style={{ color: "hsl(38 24% 96%)" }}>
-                  30K – 80K+ attendees per deployment
-                </p>
               </div>
             </div>
           </AnimSection>
