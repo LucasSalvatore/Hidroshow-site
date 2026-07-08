@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logoImg from "@/assets/hidroshow-logo.png";
 
-const NAV_LINKS = ["About", "Problem", "Solution", "Products", "Contact"];
+const NAV_LINKS: { label: string; path: string }[] = [
+  { label: "About", path: "/about" },
+  { label: "Problem", path: "/problem" },
+  { label: "Solution", path: "/solution" },
+  { label: "Products", path: "/products" },
+  { label: "Contact", path: "/contact" },
+];
 
-interface NavbarProps {
-  activeSection: string;
-}
-
-export default function Navbar({ activeSection }: NavbarProps) {
+export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 30);
@@ -17,9 +22,9 @@ export default function Navbar({ activeSection }: NavbarProps) {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
-  const scrollTo = (id: string) => {
-    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
+  const go = (path: string) => {
     setMenuOpen(false);
+    navigate(path);
   };
 
   return (
@@ -33,63 +38,55 @@ export default function Navbar({ activeSection }: NavbarProps) {
       }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "12px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div
-          style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }}
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        >
+        <Link to="/" style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <img src={logoImg} alt="Hidroshow logo" className="h-9 w-auto object-contain" />
-        </div>
+        </Link>
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-1">
-          {NAV_LINKS.map(l => (
-            <button
-              key={l}
-              onClick={() => scrollTo(l)}
-              className={`px-3.5 py-1.5 rounded-lg font-display font-semibold text-xs tracking-wide transition-all duration-200 border-none cursor-pointer ${
-                activeSection === l.toLowerCase()
-                  ? "text-primary bg-primary/[0.08]"
-                  : "text-foreground/70 hover:text-foreground bg-transparent"
-              }`}
-            >
-              {l.toUpperCase()}
-            </button>
-          ))}
+          {NAV_LINKS.map(l => {
+            const active = pathname === l.path;
+            return (
+              <button
+                key={l.path}
+                onClick={() => go(l.path)}
+                className={`px-3.5 py-1.5 rounded-lg font-display font-semibold text-xs tracking-wide transition-all duration-200 border-none cursor-pointer ${
+                  active
+                    ? "text-primary bg-primary/[0.08]"
+                    : "text-foreground/70 hover:text-foreground bg-transparent"
+                }`}
+              >
+                {l.label.toUpperCase()}
+              </button>
+            );
+          })}
         </div>
 
-        <a
-          href="#contact"
-          onClick={(e) => { e.preventDefault(); scrollTo("contact"); }}
-          className="btn-primary hidden md:inline-block text-xs py-2.5 px-6 no-underline"
-        >
+        <Link to="/contact" className="btn-primary hidden md:inline-block text-xs py-2.5 px-6 no-underline">
           GET STARTED
-        </a>
+        </Link>
 
         {/* Mobile menu button */}
         <button
           className="md:hidden bg-transparent border-none cursor-pointer p-2"
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {menuOpen ? (
-              <path d="M6 6l12 12M6 18L18 6" />
-            ) : (
-              <path d="M3 6h18M3 12h18M3 18h18" />
-            )}
+            {menuOpen ? <path d="M6 6l12 12M6 18L18 6" /> : <path d="M3 6h18M3 12h18M3 18h18" />}
           </svg>
         </button>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden" style={{ padding: "8px 24px 16px", borderTop: "1px solid hsl(var(--border))" }}>
           {NAV_LINKS.map(l => (
             <button
-              key={l}
-              onClick={() => scrollTo(l)}
+              key={l.path}
+              onClick={() => go(l.path)}
               className="block w-full text-left px-4 py-3 font-display font-semibold text-sm border-none bg-transparent cursor-pointer text-foreground/80 hover:text-primary"
             >
-              {l.toUpperCase()}
+              {l.label.toUpperCase()}
             </button>
           ))}
         </div>
