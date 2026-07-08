@@ -103,9 +103,3 @@ export default function About() {
     </section>
   );
 }
-          </AnimSection>
-        </div>
-      </div>
-    </section>
-  );
-}
