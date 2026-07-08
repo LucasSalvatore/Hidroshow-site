@@ -78,12 +78,19 @@ export default function SystemCapacity() {
             { value: foodGrade.toString(), unit: "%", label: "Food-grade water system" },
           ].map((s, i) => (
             <AnimSection key={i} delay={0.15 + i * 0.08}>
-              <div
-                className="pt-5"
-                style={{ borderTop: "1px solid hsl(var(--tap) / 0.55)" }}
-              >
+              <div className="relative pt-5 group stat-card">
+                <div
+                  className="absolute top-0 left-0 h-px stat-bar"
+                  style={{
+                    width: "100%",
+                    background: "linear-gradient(90deg, hsl(var(--tap) / 0.9), hsl(var(--tap) / 0.2))",
+                    transform: inView ? "scaleX(1)" : "scaleX(0)",
+                    transformOrigin: "left",
+                    transition: `transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) ${0.25 + i * 0.1}s`,
+                  }}
+                />
                 <div className="flex items-baseline gap-1">
-                  <span className="font-mono-num tabular-nums text-4xl md:text-5xl font-semibold text-[hsl(var(--reservoir-foreground))] leading-none">
+                  <span className="font-mono-num tabular-nums text-4xl md:text-5xl font-semibold text-[hsl(var(--reservoir-foreground))] leading-none group-hover:text-[hsl(var(--tap))] transition-colors duration-300">
                     {s.value}
                   </span>
                   {s.unit && (
