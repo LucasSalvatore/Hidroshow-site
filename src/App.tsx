@@ -4,11 +4,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
-import AboutPage from "./pages/AboutPage.tsx";
-import ProblemPage from "./pages/ProblemPage.tsx";
-import SolutionPage from "./pages/SolutionPage.tsx";
-import ProductsPage from "./pages/ProductsPage.tsx";
-import ContactPage from "./pages/ContactPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -21,12 +16,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/problem" element={<ProblemPage />} />
-          <Route path="/solution" element={<SolutionPage />} />
-          <Route path="/products" element={<ProductsPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* Single-page site: former /about, /problem, /solution, /products, /contact
+              routes were consolidated into sections on "/" — keep only the catch-all. */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

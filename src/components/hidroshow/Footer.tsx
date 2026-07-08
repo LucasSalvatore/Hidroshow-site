@@ -1,5 +1,11 @@
-import { Link } from "react-router-dom";
 import hidroshowLogo from "@/assets/hidroshow-logo.png";
+
+const FOOTER_NAV = [
+  { label: "Problem", id: "problem" },
+  { label: "Solution", id: "solution" },
+  { label: "Impact", id: "impact" },
+  { label: "Contact", id: "contact" },
+];
 
 export default function Footer() {
   return (
@@ -14,21 +20,23 @@ export default function Footer() {
               <span className="heading-display text-xl tracking-[0.15em]">HIDROSHOW</span>
             </div>
             <p className="text-sm leading-relaxed max-w-[280px]" style={{ color: "hsl(38 24% 92% / 0.6)" }}>
-              Mobile hydration infrastructure for large-scale live events. Measured delivery, food-grade certified.
+              Mobile hydration infrastructure for large-scale live events. Our mission: close the hydration gap at every large gathering with measured, low-waste water delivery.
             </p>
+            {/* VERIFY: only display an NSF-61 badge here if equipment is actually certified;
+                otherwise keep the "food-grade materials" wording below. */}
             <div className="mt-5 inline-flex">
-              <span className="badge-label badge-on-dark">MFG · NEW JERSEY · USA</span>
+              <span className="badge-label badge-on-dark">FOOD-GRADE MATERIALS</span>
             </div>
           </div>
 
           <div>
             <h4 className="font-mono-num text-[11px] tracking-[0.22em] mb-5" style={{ color: "hsl(38 24% 92% / 0.5)" }}>NAVIGATION</h4>
-            {["About", "Problem", "Solution", "Products", "Contact"].map(l => (
-              <Link key={l} to={`/${l.toLowerCase()}`}
+            {FOOTER_NAV.map(l => (
+              <a key={l.id} href={`#${l.id}`}
                 className="block text-sm mb-2.5 no-underline transition-colors"
                 style={{ color: "hsl(38 24% 92% / 0.7)" }}>
-                {l}
-              </Link>
+                {l.label}
+              </a>
             ))}
           </div>
 
@@ -41,6 +49,7 @@ export default function Footer() {
 
           <div>
             <h4 className="font-mono-num text-[11px] tracking-[0.22em] mb-5" style={{ color: "hsl(38 24% 92% / 0.5)" }}>CONTACT</h4>
+            {/* PLACEHOLDER contact details — replace with real address/email/phone before launch */}
             <p className="font-mono-num text-sm mb-2.5" style={{ color: "hsl(38 24% 92% / 0.75)" }}>hello@hidroshow.com</p>
             <p className="font-mono-num text-sm mb-2.5" style={{ color: "hsl(38 24% 92% / 0.75)" }}>+1 (555) 000-AGUA</p>
             <p className="font-mono-num text-sm" style={{ color: "hsl(38 24% 92% / 0.75)" }}>Newark, NJ</p>
@@ -52,10 +61,12 @@ export default function Footer() {
             © 2026 HIDROSHOW · LUCAN COMPANY
           </p>
           <div className="flex gap-4">
+            {/* PLACEHOLDER socials — swap these spans for <a> tags once real profile URLs exist,
+                kept as plain text for now so the page ships with no dead links */}
             {["Instagram", "LinkedIn", "YouTube"].map(name => (
-              <a key={name} href="#" className="font-mono-num text-[11px] tracking-[0.18em] uppercase no-underline transition-colors" style={{ color: "hsl(38 24% 92% / 0.55)" }}>
+              <span key={name} className="font-mono-num text-[11px] tracking-[0.18em] uppercase" style={{ color: "hsl(38 24% 92% / 0.55)" }}>
                 {name}
-              </a>
+              </span>
             ))}
           </div>
         </div>

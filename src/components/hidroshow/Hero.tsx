@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-waterdrop.jpg";
+import { usePrefersReducedMotion } from "./useCountUp";
 import heroVideo1 from "@/assets/hero-waterdrop-1.mp4.asset.json";
 import heroVideo2 from "@/assets/hero-waterdrop-2.mp4.asset.json";
 import heroVideo3 from "@/assets/hero-waterdrop-3.mp4.asset.json";
@@ -10,6 +10,7 @@ const MIN_CYCLE_MS = 12000;
 const FADE_MS = 900;
 
 export default function Hero() {
+  const reducedMotion = usePrefersReducedMotion();
   const [count, setCount] = useState(0);
   const [activeIdx, setActiveIdx] = useState(0);
   const [nextIdx, setNextIdx] = useState(1);
@@ -20,8 +21,9 @@ export default function Hero() {
   const videoB = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    let start = 0;
     const end = 120000;
+    if (reducedMotion) { setCount(end); return; }
+    let start = 0;
     const dur = 2000;
     const step = end / (dur / 16);
     const timer = setInterval(() => {
@@ -30,7 +32,7 @@ export default function Hero() {
       else setCount(Math.floor(start));
     }, 16);
     return () => clearInterval(timer);
-  }, []);
+  }, [reducedMotion]);
 
   const doTransition = useCallback(() => {
     if (transitioningRef.current) return;
@@ -81,8 +83,10 @@ export default function Hero() {
     }
   }, [doTransition, showA]);
 
-  // Initial load: start the visible clip and begin playing the next clip behind it
+  // Initial load: start the visible clip and begin playing the next clip behind it.
+  // With prefers-reduced-motion the videos stay unloaded and the still poster shows instead.
   useEffect(() => {
+    if (reducedMotion) return;
     const a = videoA.current;
     const b = videoB.current;
     if (a) {
@@ -96,7 +100,7 @@ export default function Hero() {
       b.play().catch(() => {});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [reducedMotion]);
 
   const videoBaseClass = "absolute inset-0 w-full h-full object-cover object-center";
   const videoTransition = { transition: `opacity ${FADE_MS}ms ease-in-out` };
@@ -204,18 +208,20 @@ export default function Hero() {
           </div>
 
           <div className="flex flex-wrap gap-3">
-            <Link to="/contact" className="btn-primary no-underline" style={{ background: "hsl(var(--tap))", borderColor: "hsl(var(--tap))", color: "hsl(var(--reservoir-foreground))" }}>
+            <a href="#contact" className="btn-primary no-underline" style={{ background: "hsl(var(--tap))", borderColor: "hsl(var(--tap))", color: "hsl(var(--reservoir-foreground))" }}>
               Book for your event →
-            </Link>
-            <Link to="/solution" className="btn-outline-hero no-underline">
+            </a>
+            <a href="#solution" className="btn-outline-hero no-underline">
               How the system works
-            </Link>
+            </a>
           </div>
 
-          {/* Certification plate */}
+          {/* Materials plate */}
+          {/* VERIFY: only display an NSF-61 badge here if equipment is actually certified;
+              until confirmed, keep the "food-grade materials" wording below. */}
           <div className="mt-10 inline-flex items-center gap-3">
             <span className="badge-label" style={{ color: "hsl(var(--signal))", borderColor: "hsl(var(--signal) / 0.5)", borderLeftColor: "hsl(var(--signal))" }}>
-              FOOD-GRADE CERTIFIED · NSF-61
+              FOOD-GRADE MATERIALS
             </span>
           </div>
         </div>

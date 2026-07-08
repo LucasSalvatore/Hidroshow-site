@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect, ReactNode } from "react";
+import { usePrefersReducedMotion } from "./useCountUp";
 
 export function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
@@ -19,15 +20,21 @@ interface AnimSectionProps {
 
 export default function AnimSection({ children, className = "", delay = 0 }: AnimSectionProps) {
   const [ref, inView] = useInView();
+  const reduced = usePrefersReducedMotion();
+  const visible = inView || reduced;
   return (
     <div
       ref={ref}
       className={className}
-      style={{
-        opacity: inView ? 1 : 0,
-        transform: inView ? "translateY(0)" : "translateY(30px)",
-        transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
-      }}
+      style={
+        reduced
+          ? undefined
+          : {
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateY(0)" : "translateY(30px)",
+              transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+            }
+      }
     >
       {children}
     </div>
