@@ -48,7 +48,7 @@ export default function Footer() {
 
         <div className="border-t border-[hsl(38_24%_92%/0.1)] pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <p className="font-mono-num text-[11px] tracking-wider" style={{ color: "hsl(38 24% 92% / 0.4)" }}>
-            © 2025 HIDROSHOW · MONTCLAIR STATE UNIVERSITY
+            © 2026 HIDROSHOW · LUCAN COMPANY
           </p>
           <div className="flex gap-4">
             {["Instagram", "LinkedIn", "YouTube"].map(name => (

@@ -1,5 +1,5 @@
 import AnimSection from "./AnimSection";
-import crowdImg from "@/assets/crowd-festival.jpg";
+import noWaterImg from "@/assets/no-water-no-show.png.asset.json";
 import teamImg from "@/assets/team-photo.jpg";
 
 export default function About() {
@@ -58,7 +58,7 @@ export default function About() {
               <span className="badge-label badge-signal mb-3 inline-block">RECOGNITION</span>
               <h4 className="heading-display text-lg text-[hsl(var(--reservoir))]">3rd Place · Social Entrepreneurship Poster Competition</h4>
               <p className="text-muted-foreground text-sm mt-2 leading-relaxed">
-                Business concept recognized and approved by faculty at Montclair State University's 2026 Social Entrepreneurship Poster Competition.
+                Business concept recognized and approved by faculty at the Lucan Company 2026 Social Entrepreneurship Poster Competition.
               </p>
             </div>
           </AnimSection>
@@ -82,11 +82,23 @@ export default function About() {
               </div>
             ))}
 
-            <div className="mt-6 overflow-hidden border border-border" style={{ borderRadius: 3 }}>
-              <img src={crowdImg} alt="Festival crowd" loading="lazy" decoding="async" className="w-full h-64 md:h-80 object-cover" />
-            </div>
           </AnimSection>
         </div>
+
+        <AnimSection className="mt-16">
+          <div
+            className="relative overflow-hidden border border-border"
+            style={{ borderRadius: 3, aspectRatio: "21 / 6" }}
+          >
+            <img
+              src={noWaterImg.url}
+              alt="Hidroshow · No Water, No Show — mobile hydration infrastructure for live events"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </AnimSection>
       </div>
     </section>
   );
