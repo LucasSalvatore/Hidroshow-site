@@ -83,27 +83,50 @@ export default function About() {
               </div>
             ))}
 
+            <div className="mt-6 overflow-hidden border border-border relative" style={{ borderRadius: 3 }}>
+              <img
+                src={crowdVerticalImg.url}
+                alt="Festival crowd silhouetted against warm stage lights"
+                loading="lazy"
+                decoding="async"
+                className="w-full h-72 md:h-96 object-cover"
+              />
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{ background: "linear-gradient(180deg, transparent 55%, hsl(var(--reservoir) / 0.55) 100%)" }}
+              />
+              <div className="absolute bottom-5 left-5 right-5">
+                <span className="badge-label badge-signal mb-2 inline-block">EVENT SCALE</span>
+                <p className="font-mono-num text-[11px] tracking-[0.22em] uppercase" style={{ color: "hsl(38 24% 96%)" }}>
+                  30K – 80K+ attendees per deployment
+                </p>
+              </div>
+            </div>
           </AnimSection>
         </div>
       </div>
 
-      <AnimSection className="mt-24 relative w-screen left-1/2 -translate-x-1/2 overflow-hidden">
-        <img
-          src={festivalImg.url}
-          alt="Nighttime music festival crowd bathed in warm stage light"
-          loading="lazy"
-          decoding="async"
-          className="w-full h-[42vh] md:h-[56vh] object-cover"
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-24"
-          style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 100%)" }}
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
-          style={{ background: "linear-gradient(0deg, hsl(var(--background)) 0%, transparent 100%)" }}
-        />
-      </AnimSection>
+      <div className="mt-24 relative left-1/2 -translate-x-1/2 w-screen overflow-hidden">
+        <AnimSection>
+          <div className="relative">
+            <img
+              src={festivalImg.url}
+              alt="Nighttime music festival crowd bathed in warm stage light"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-[42vh] md:h-[56vh] object-cover"
+            />
+            <div
+              className="pointer-events-none absolute inset-x-0 top-0 h-24"
+              style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 100%)" }}
+            />
+            <div
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
+              style={{ background: "linear-gradient(0deg, hsl(var(--background)) 0%, transparent 100%)" }}
+            />
+          </div>
+        </AnimSection>
+      </div>
     </section>
   );
 }
