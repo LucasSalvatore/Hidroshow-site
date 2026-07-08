@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import festivalImg from "@/assets/hero-festival.jpg";
 import dropImg from "@/assets/hero-waterdrop.jpg";
+import festivalImg from "@/assets/hero-festival.jpg";
 import AnimSection from "./AnimSection";
 import { useInView } from "./AnimSection";
 
@@ -29,74 +29,26 @@ export default function SystemCapacity() {
   const attendees = useCountUp(50000, inView);
   const foodGrade = useCountUp(100, inView);
 
-  // Manual toggle: 'auto' (crossfade) | 'festival' | 'drop'
-  const [bgMode, setBgMode] = useState<"auto" | "festival" | "drop">("auto");
-  const [paused, setPaused] = useState(false);
-
-  const scrim = "linear-gradient(90deg, hsl(198 45% 14% / 0.92) 0%, hsl(198 45% 14% / 0.72) 45%, hsl(198 45% 14% / 0.5) 100%)";
-
   return (
     <section
       id="capacity"
       ref={ref}
-      className={`section-padding relative overflow-hidden capacity-alt-bg capacity-mode-${bgMode}${paused ? " capacity-paused" : ""}`}
+      className="section-padding relative overflow-hidden"
       style={{ background: "hsl(var(--reservoir))", color: "hsl(var(--reservoir-foreground))" }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocusCapture={() => setPaused(true)}
-      onBlurCapture={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node)) setPaused(false);
-      }}
     >
-      {/* Alternating background layers: festival <-> water drop */}
+      {/* Static water-drop backdrop */}
       <div
-        className="capacity-alt-layer capacity-alt-a"
         aria-hidden
-        style={{ backgroundImage: `${scrim}, url(${festivalImg})` }}
-      />
-      <div
-        className="capacity-alt-layer capacity-alt-b"
-        aria-hidden
-        style={{ backgroundImage: `${scrim}, url(${dropImg})` }}
-      />
-
-      {/* Manual background toggle */}
-      <div
-        className="absolute top-4 right-4 z-20 flex items-center gap-1 p-1 rounded-sm"
-        role="radiogroup"
-        aria-label="Section background"
+        className="absolute inset-0 z-0"
         style={{
-          background: "hsl(198 45% 8% / 0.5)",
-          border: "1px solid hsl(38 24% 92% / 0.2)",
-          backdropFilter: "blur(6px)",
+          backgroundImage: `linear-gradient(90deg, hsl(198 45% 14% / 0.94) 0%, hsl(198 45% 14% / 0.78) 50%, hsl(198 45% 14% / 0.6) 100%), url(${dropImg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
-      >
-        {([
-          { id: "auto", label: "Auto" },
-          { id: "festival", label: "Festival" },
-          { id: "drop", label: "Drop" },
-        ] as const).map((opt) => (
-          <button
-            key={opt.id}
-            type="button"
-            role="radio"
-            aria-checked={bgMode === opt.id}
-            onClick={() => setBgMode(opt.id)}
-            className="font-mono-num text-[10px] tracking-[0.15em] uppercase px-2.5 py-1 rounded-sm transition-colors"
-            style={{
-              background: bgMode === opt.id ? "hsl(var(--tap))" : "transparent",
-              color:
-                bgMode === opt.id
-                  ? "hsl(var(--reservoir-foreground))"
-                  : "hsl(38 24% 92% / 0.7)",
-            }}
-          >
-            {opt.label}
-          </button>
-        ))}
-      </div>
+      />
 
       <div className="relative z-10" style={{ maxWidth: 1200, margin: "0 auto" }}>
+
         <AnimSection className="flex flex-wrap items-center justify-between gap-4 mb-10">
           <div className="flex items-center gap-3">
             <span
