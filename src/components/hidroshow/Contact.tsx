@@ -60,8 +60,6 @@ export default function Contact() {
               <span className="badge-label mb-4 inline-block">DIRECT CHANNELS</span>
               {[
                 { label: "Email", val: "hello@hidroshow.com" },
-                { label: "Phone", val: "+1 (555) 000-AGUA" },
-                { label: "Based In", val: "Newark, NJ · USA" },
               ].map(c => (
                 <div key={c.label} className="py-3 border-b border-border last:border-none">
                   <p className="font-mono-num text-[10px] uppercase tracking-[0.2em] text-muted-foreground mb-1">{c.label}</p>
