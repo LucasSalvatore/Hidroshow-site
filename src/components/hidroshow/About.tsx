@@ -1,5 +1,6 @@
 import AnimSection from "./AnimSection";
 import festivalImg from "@/assets/festival-panorama.jpg.asset.json";
+import crowdVerticalImg from "@/assets/concert-crowd-vertical.jpg.asset.json";
 import teamImg from "@/assets/team-photo.jpg";
 
 export default function About() {
