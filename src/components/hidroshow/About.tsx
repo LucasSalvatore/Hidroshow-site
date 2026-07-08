@@ -34,9 +34,9 @@ export default function About() {
               <div className="grid grid-cols-2 gap-3">
                 {[
                   { name: "Pedro Justa", role: "CEO" },
-                  { name: "Shery Imran", role: "Co-CEO" },
-                  { name: "Joshua Bracero", role: "CFO & CMO" },
-                  { name: "Noah Mazard", role: "COO" },
+                  { name: "Shery Imran", role: "Co-CEO & COO" },
+                  { name: "Joshua Bracero", role: "CTO" },
+                  { name: "Noah Mazard", role: "CMO & CFO" },
                 ].map(({ name, role }) => (
                   <div key={name} className="flex items-center gap-3 py-2 border-t border-border">
                     <span className="font-mono-num text-[10px] text-[hsl(var(--tap))] w-8">
