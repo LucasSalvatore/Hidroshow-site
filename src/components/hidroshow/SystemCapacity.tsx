@@ -53,7 +53,7 @@ export default function SystemCapacity() {
 
         <AnimSection delay={0.05} className="mb-6">
           <div className="flex items-baseline gap-3">
-            <span className="font-mono-num tabular-nums text-6xl md:text-8xl lg:text-9xl font-semibold text-[hsl(var(--reservoir-foreground))] leading-none">
+            <span className="font-mono-num tabular-nums text-6xl md:text-8xl lg:text-9xl font-semibold text-[hsl(var(--reservoir-foreground))] leading-none animate-headline-glow">
               {headline.toLocaleString()}
             </span>
             <span className="font-mono-num text-2xl md:text-4xl font-medium text-[hsl(var(--tap))]">L</span>
