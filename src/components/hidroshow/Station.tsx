@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import AnimSection, { useInView } from "./AnimSection";
 import { usePrefersReducedMotion } from "./useCountUp";
 import blueprintImg from "@/assets/station-blueprint.jpg";
-import adVideo from "@/assets/hidroshow-ad.mp4";
+import fieldImg from "@/assets/stations-outdoor.jpg";
 
 // three.js is ~800KB — load the 3D viewer only when this section nears the viewport.
 const StationViewer = lazy(() => import("./StationViewer"));
@@ -116,15 +116,12 @@ export default function Station() {
               </p>
             </div>
             <div className="md:w-1/2 flex md:justify-end">
-              <div className="overflow-hidden w-full max-w-sm aspect-[9/16]" style={{ borderRadius: 3, border: "1px solid hsl(var(--tap) / 0.25)" }}>
-                <video
-                  src={adVideo}
-                  controls
-                  autoPlay={!reduced}
-                  muted
-                  loop
-                  playsInline
+              <div className="overflow-hidden w-full aspect-[4/3]" style={{ borderRadius: 3, border: "1px solid hsl(var(--tap) / 0.25)" }}>
+                <img
+                  src={fieldImg}
+                  alt="Hidroshow multi-tap water stations deployed at a live event"
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
               </div>
             </div>
