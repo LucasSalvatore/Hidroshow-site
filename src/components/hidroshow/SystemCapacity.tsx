@@ -31,18 +31,9 @@ export default function SystemCapacity() {
     <section
       id="capacity"
       ref={ref}
-      className="section-padding relative overflow-hidden -mt-32 md:-mt-40"
-      style={{ color: "hsl(var(--reservoir-foreground))" }}
+      className="section-padding relative overflow-hidden"
+      style={{ color: "hsl(var(--reservoir-foreground))", background: "hsl(198 45% 14%)" }}
     >
-      {/* Scrim that fades from transparent (over the hero video) to dark (below it) */}
-      <div
-        aria-hidden
-        className="absolute inset-0 z-0"
-        style={{
-          background:
-            "linear-gradient(180deg, hsl(198 45% 14% / 0.35) 0%, hsl(198 45% 14% / 0.82) 35%, hsl(198 45% 14% / 0.96) 100%)",
-        }}
-      />
 
       <div className="relative z-10" style={{ maxWidth: 1200, margin: "0 auto" }}>
 
