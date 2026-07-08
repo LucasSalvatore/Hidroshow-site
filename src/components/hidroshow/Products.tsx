@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import AnimSection from "./AnimSection";
 
 export default function Products() {
@@ -67,11 +68,11 @@ export default function Products() {
                     </div>
                   ))}
 
-                  <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-                    className="block mt-auto pt-4 text-center py-3 rounded-xl font-display font-bold text-xs tracking-wider no-underline transition-opacity"
+                  <Link to="/contact"
+                    className="block mt-auto text-center py-3 rounded-xl font-display font-bold text-xs tracking-wider no-underline transition-opacity"
                     style={{ background: p.color, color: "white" }}>
                     {p.cta}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </AnimSection>

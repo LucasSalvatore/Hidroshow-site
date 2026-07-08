@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
-  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <footer className="bg-navy text-navy-foreground" style={{ padding: "60px 2rem 32px" }}>
@@ -20,10 +21,10 @@ export default function Footer() {
           <div>
             <h4 className="font-display font-bold text-sm mb-4 opacity-80">NAVIGATION</h4>
             {["About", "Problem", "Solution", "Products", "Contact"].map(l => (
-              <button key={l} onClick={() => scrollTo(l.toLowerCase())}
-                className="block bg-transparent border-none cursor-pointer text-sm opacity-50 hover:opacity-100 transition-opacity mb-2 p-0 text-navy-foreground">
+              <Link key={l} to={`/${l.toLowerCase()}`}
+                className="block text-sm opacity-50 hover:opacity-100 transition-opacity mb-2 text-navy-foreground no-underline">
                 {l}
-              </button>
+              </Link>
             ))}
           </div>
 

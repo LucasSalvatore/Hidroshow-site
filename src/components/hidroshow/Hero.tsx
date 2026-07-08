@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-festival.jpg";
 
 function WaterDrop({ style }: { style: React.CSSProperties }) {
@@ -50,14 +51,12 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">
-              <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="btn-primary no-underline">
+              <Link to="/contact" className="btn-primary no-underline">
                 BOOK FOR YOUR EVENT
-              </a>
-              <a href="#solution" onClick={(e) => { e.preventDefault(); document.getElementById("solution")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="btn-outline-hero no-underline">
+              </Link>
+              <Link to="/solution" className="btn-outline-hero no-underline">
                 SEE HOW IT WORKS
-              </a>
+              </Link>
             </div>
 
             <div className="grid grid-cols-3 gap-4">
