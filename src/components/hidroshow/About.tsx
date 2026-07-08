@@ -82,9 +82,27 @@ export default function About() {
               </div>
             ))}
 
-            <div className="mt-6 overflow-hidden border border-border" style={{ borderRadius: 3 }}>
-              <img src={crowdImg} alt="Festival crowd" loading="lazy" decoding="async" className="w-full h-64 md:h-80 object-cover" />
-            </div>
+          </AnimSection>
+        </div>
+
+        <AnimSection className="mt-16">
+          <div
+            className="relative overflow-hidden border border-border"
+            style={{ borderRadius: 3, aspectRatio: "21 / 6" }}
+          >
+            <img
+              src={noWaterImg.url}
+              alt="Hidroshow · No Water, No Show — mobile hydration infrastructure for live events"
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </AnimSection>
+      </div>
+    </section>
+  );
+}
           </AnimSection>
         </div>
       </div>
