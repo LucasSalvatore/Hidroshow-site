@@ -3,6 +3,8 @@ import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Center } from "@react-three/drei";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
 import * as THREE from "three";
+import { Store, Music, Trophy, Globe } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 function StationModel({ position = [0, 0, 0] as [number, number, number], color = "hsl(217, 91%, 60%)", scale: modelScale = 1 }) {
   const geometry = useLoader(STLLoader, "/models/station.stl");
