@@ -36,7 +36,7 @@ export default function About() {
                   {[
                     { name: "Pedro Justa", role: "CEO" },
                     { name: "Shery Imran", role: "COO & CFO" },
-                    { name: "Joshua Bracero", role: "CRO & CTO" },
+                    { name: "Lucas Salvatore", role: "CRO & CTO" },
                     { name: "Noah Mazard", role: "CMO" },
                   ].map(({ name, role }) => (
                     <div key={name} className="flex items-center gap-3 py-2 border-t border-border">
