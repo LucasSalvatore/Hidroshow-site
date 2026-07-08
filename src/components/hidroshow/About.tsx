@@ -114,7 +114,7 @@ export default function About() {
         </AnimSection>
       </div>
 
-      <div className="mt-24 relative left-1/2 -translate-x-1/2 w-screen overflow-hidden">
+      <div className="mt-10 relative left-1/2 -translate-x-1/2 w-screen overflow-hidden">
         <AnimSection>
           <div className="relative">
             <img
