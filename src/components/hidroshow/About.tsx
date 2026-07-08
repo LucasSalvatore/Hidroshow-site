@@ -13,45 +13,47 @@ export default function About() {
           <div className="gauge-ticks max-w-sm mt-6" />
         </AnimSection>
 
-        <div className="grid lg:grid-cols-2 gap-10">
-          <AnimSection>
-            <div className="mb-5 p-8 bg-card border border-border" style={{ borderRadius: 3 }}>
-              <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-3">MISSION</h4>
-              <p className="text-foreground text-base leading-relaxed">
-                Eliminate the hydration gap at large-scale events by deploying mobile, sustainable water infrastructure that delivers free, clean water to every attendee — at the volumes real events demand.
-              </p>
-            </div>
-
-            <div className="mb-5 p-8 bg-card border border-border" style={{ borderRadius: 3 }}>
-              <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-3">VISION</h4>
-              <p className="text-foreground text-base leading-relaxed">
-                A live-events industry where no attendee suffers dehydration and every large gathering runs on a measurable, closed-loop water system.
-              </p>
-            </div>
-
-            <div className="p-8 bg-card border border-border" style={{ borderRadius: 3 }}>
-              <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-4">TEAM</h4>
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { name: "Pedro Justa", role: "CEO" },
-                  { name: "Shery Imran", role: "Co-CEO & COO" },
-                  { name: "Joshua Bracero", role: "CTO" },
-                  { name: "Noah Mazard", role: "CMO & CFO" },
-                ].map(({ name, role }) => (
-                  <div key={name} className="flex items-center gap-3 py-2 border-t border-border">
-                    <span className="font-mono-num text-[10px] text-[hsl(var(--tap))] w-8">
-                      {name.split(" ").map(n => n[0]).join("")}
-                    </span>
-                    <div className="flex flex-col">
-                      <span className="text-foreground text-sm font-medium">{name}</span>
-                      <span className="font-mono-num text-muted-foreground text-[10px] tracking-widest uppercase">{role}</span>
-                    </div>
-                  </div>
-                ))}
+        <div className="grid lg:grid-cols-2 gap-10 items-stretch">
+          <AnimSection className="h-full">
+            <div className="flex flex-col h-full gap-5">
+              <div className="p-8 bg-card border border-border flex-1" style={{ borderRadius: 3 }}>
+                <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-3">MISSION</h4>
+                <p className="text-foreground text-base leading-relaxed">
+                  Eliminate the hydration gap at large-scale events by deploying mobile, sustainable water infrastructure that delivers free, clean water to every attendee — at the volumes real events demand.
+                </p>
               </div>
 
-              <div className="mt-6 overflow-hidden border border-border" style={{ borderRadius: 3 }}>
-                <img src={teamImg} alt="Hidroshow founding team at the 2026 Social Entrepreneurship Poster Competition" loading="lazy" decoding="async" className="w-full h-72 md:h-96 object-cover" />
+              <div className="p-8 bg-card border border-border flex-1" style={{ borderRadius: 3 }}>
+                <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-3">VISION</h4>
+                <p className="text-foreground text-base leading-relaxed">
+                  A live-events industry where no attendee suffers dehydration and every large gathering runs on a measurable, closed-loop water system.
+                </p>
+              </div>
+
+              <div className="p-8 bg-card border border-border flex-1 flex flex-col" style={{ borderRadius: 3 }}>
+                <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-4">TEAM</h4>
+                <div className="grid grid-cols-2 gap-3">
+                  {[
+                    { name: "Pedro Justa", role: "CEO" },
+                    { name: "Shery Imran", role: "COO & CFO" },
+                    { name: "Joshua Bracero", role: "CRO & CTO" },
+                    { name: "Noah Mazard", role: "CMO" },
+                  ].map(({ name, role }) => (
+                    <div key={name} className="flex items-center gap-3 py-2 border-t border-border">
+                      <span className="font-mono-num text-[10px] text-[hsl(var(--tap))] w-8">
+                        {name.split(" ").map(n => n[0]).join("")}
+                      </span>
+                      <div className="flex flex-col">
+                        <span className="text-foreground text-sm font-medium">{name}</span>
+                        <span className="font-mono-num text-muted-foreground text-[10px] tracking-widest uppercase">{role}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 overflow-hidden border border-border flex-1 min-h-0" style={{ borderRadius: 3 }}>
+                  <img src={teamImg} alt="Hidroshow founding team at the 2026 Social Entrepreneurship Poster Competition" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                </div>
               </div>
             </div>
           </AnimSection>
