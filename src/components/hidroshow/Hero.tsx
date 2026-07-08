@@ -44,7 +44,7 @@ export default function Hero() {
       {/* Bottom vignette for text contrast on small screens */}
       <div className="absolute inset-0 md:hidden" style={{ background: "linear-gradient(180deg, hsl(198 45% 10% / 0.55) 0%, hsl(198 45% 10% / 0.85) 100%)" }} />
 
-      <div className="relative w-full" style={{ maxWidth: 1280, margin: "0 auto", padding: "140px 24px 100px" }}>
+      <div className="relative w-full" style={{ maxWidth: 1280, margin: "0 auto", padding: "140px 24px 220px" }}>
         <div className="max-w-2xl text-[hsl(var(--reservoir-foreground))]">
           {/* Spec plate */}
           <div className="mb-8 inline-flex items-center gap-3">
