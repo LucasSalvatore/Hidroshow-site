@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import heroImg from "@/assets/hero-festival.jpg";
+import festivalImg from "@/assets/hero-festival.jpg";
+import dropImg from "@/assets/hero-waterdrop.jpg";
 import AnimSection from "./AnimSection";
 import { useInView } from "./AnimSection";
 
@@ -28,9 +29,11 @@ export default function SystemCapacity() {
   const attendees = useCountUp(50000, inView);
   const foodGrade = useCountUp(100, inView);
 
-  // Manual toggle: 'auto' (crossfade) | 'reservoir' | 'glow'
-  const [bgMode, setBgMode] = useState<"auto" | "reservoir" | "glow">("auto");
+  // Manual toggle: 'auto' (crossfade) | 'festival' | 'drop'
+  const [bgMode, setBgMode] = useState<"auto" | "festival" | "drop">("auto");
   const [paused, setPaused] = useState(false);
+
+  const scrim = "linear-gradient(90deg, hsl(198 45% 14% / 0.92) 0%, hsl(198 45% 14% / 0.72) 45%, hsl(198 45% 14% / 0.5) 100%)";
 
   return (
     <section
@@ -45,12 +48,16 @@ export default function SystemCapacity() {
         if (!e.currentTarget.contains(e.relatedTarget as Node)) setPaused(false);
       }}
     >
-      {/* Alternating background layers: gradient <-> image glow */}
-      <div className="capacity-alt-layer capacity-alt-gradient" aria-hidden />
+      {/* Alternating background layers: festival <-> water drop */}
       <div
-        className="capacity-alt-layer capacity-alt-image"
+        className="capacity-alt-layer capacity-alt-a"
         aria-hidden
-        style={{ backgroundImage: `linear-gradient(90deg, hsl(198 45% 14% / 0.92) 0%, hsl(198 45% 14% / 0.75) 40%, hsl(198 45% 14% / 0.55) 100%), url(${heroImg})` }}
+        style={{ backgroundImage: `${scrim}, url(${festivalImg})` }}
+      />
+      <div
+        className="capacity-alt-layer capacity-alt-b"
+        aria-hidden
+        style={{ backgroundImage: `${scrim}, url(${dropImg})` }}
       />
 
       {/* Manual background toggle */}
@@ -66,8 +73,8 @@ export default function SystemCapacity() {
       >
         {([
           { id: "auto", label: "Auto" },
-          { id: "reservoir", label: "Reservoir" },
-          { id: "glow", label: "Glow" },
+          { id: "festival", label: "Festival" },
+          { id: "drop", label: "Drop" },
         ] as const).map((opt) => (
           <button
             key={opt.id}
