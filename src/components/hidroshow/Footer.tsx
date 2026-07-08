@@ -9,8 +9,9 @@ export default function Footer() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <div className="flex items-center mb-5">
-              <img src={hidroshowLogo} alt="HIDROSHOW" className="h-10 w-auto object-contain" />
+            <div className="flex items-center gap-3 mb-5">
+              <img src={hidroshowLogo} alt="" className="h-16 w-auto object-contain" />
+              <span className="heading-display text-xl tracking-[0.15em]">HIDROSHOW</span>
             </div>
             <p className="text-sm leading-relaxed max-w-[280px]" style={{ color: "hsl(38 24% 92% / 0.6)" }}>
               Mobile hydration infrastructure for large-scale live events. Measured delivery, food-grade certified.
