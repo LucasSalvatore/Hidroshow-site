@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-waterdrop.jpg";
 import heroVideo1 from "@/assets/hero-waterdrop-1.mp4.asset.json";
@@ -7,12 +7,17 @@ import heroVideo3 from "@/assets/hero-waterdrop-3.mp4.asset.json";
 
 const HERO_CLIPS = [heroVideo1.url, heroVideo2.url, heroVideo3.url];
 const MIN_CYCLE_MS = 12000;
+const FADE_MS = 900;
 
 export default function Hero() {
   const [count, setCount] = useState(0);
-  const [clipIdx, setClipIdx] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [nextIdx, setNextIdx] = useState(1);
+  const [showA, setShowA] = useState(true);
   const cycleStartRef = useRef<number>(Date.now());
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const transitioningRef = useRef(false);
+  const videoA = useRef<HTMLVideoElement>(null);
+  const videoB = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     let start = 0;
@@ -27,41 +32,97 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  // Advance to next clip once current has played for at least MIN_CYCLE_MS
-  const handleEnded = () => {
+  const doTransition = useCallback(() => {
+    if (transitioningRef.current) return;
+    transitioningRef.current = true;
+
+    // Crossfade to the preloaded inactive player
+    setShowA((s) => !s);
+
+    window.setTimeout(() => {
+      const newActive = nextIdx;
+      const newNext = (nextIdx + 1) % HERO_CLIPS.length;
+      setActiveIdx(newActive);
+      setNextIdx(newNext);
+      cycleStartRef.current = Date.now();
+
+      // Load the upcoming clip into the now-inactive player so it is ready
+      const inactiveVideo = showA ? videoA.current : videoB.current;
+      if (inactiveVideo) {
+        inactiveVideo.src = HERO_CLIPS[newNext];
+        inactiveVideo.load();
+        inactiveVideo.play().catch(() => {});
+      }
+      transitioningRef.current = false;
+    }, FADE_MS);
+  }, [nextIdx, showA]);
+
+  const handleEnded = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const activeVideo = showA ? videoA.current : videoB.current;
+    // Ignore ended events from the hidden preloaded player
+    if (e.currentTarget !== activeVideo) return;
+
     const elapsed = Date.now() - cycleStartRef.current;
     if (elapsed >= MIN_CYCLE_MS) {
-      setClipIdx((i) => (i + 1) % HERO_CLIPS.length);
-      cycleStartRef.current = Date.now();
+      doTransition();
     } else {
-      // replay same clip until threshold met
-      const v = videoRef.current;
-      if (v) { v.currentTime = 0; v.play().catch(() => {}); }
+      // Replay the current clip until the minimum display time is met
+      if (activeVideo) {
+        activeVideo.currentTime = 0;
+        activeVideo.play().catch(() => {});
+      }
     }
-  };
+  }, [doTransition, showA]);
 
+  // Initial load: start the visible clip and begin playing the next clip behind it
   useEffect(() => {
-    const v = videoRef.current;
-    if (v) { v.load(); v.play().catch(() => {}); }
-  }, [clipIdx]);
+    const a = videoA.current;
+    const b = videoB.current;
+    if (a) {
+      a.src = HERO_CLIPS[activeIdx];
+      a.load();
+      a.play().catch(() => {});
+    }
+    if (b) {
+      b.src = HERO_CLIPS[nextIdx];
+      b.load();
+      b.play().catch(() => {});
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const videoBaseClass = "absolute inset-0 w-full h-full object-cover object-center";
+  const videoTransition = { transition: `opacity ${FADE_MS}ms ease-in-out` };
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-[hsl(var(--reservoir))]">
-      {/* Full-bleed animated water drop — cycles across similar clips */}
+      {/* Two-layer video crossfade — one always playing so swaps are seamless */}
       <video
-        ref={videoRef}
-        key={clipIdx}
-        src={HERO_CLIPS[clipIdx]}
+        ref={videoA}
         poster={heroImg}
         autoPlay
         muted
         playsInline
+        loop
         preload="auto"
         onEnded={handleEnded}
         aria-hidden
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className={videoBaseClass}
+        style={{ ...videoTransition, opacity: showA ? 1 : 0 }}
       />
-
+      <video
+        ref={videoB}
+        poster={heroImg}
+        autoPlay
+        muted
+        playsInline
+        loop
+        preload="auto"
+        onEnded={handleEnded}
+        aria-hidden
+        className={videoBaseClass}
+        style={{ ...videoTransition, opacity: showA ? 0 : 1 }}
+      />
 
       {/* Dark scrim from left */}
       <div

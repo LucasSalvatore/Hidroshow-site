@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logoImg from "@/assets/hidroshow-logo-dark.png.asset.json";
 
 export default function Footer() {
   return (
@@ -9,8 +10,12 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-5">
-              <span className="inline-block w-2 h-6 bg-[hsl(var(--tap))]" />
-              <span className="heading-display text-lg tracking-[0.15em]">HIDROSHOW</span>
+              <img
+                src={logoImg.url}
+                alt="Hidroshow"
+                className="h-7 w-auto"
+                style={{ display: "block" }}
+              />
             </div>
             <p className="text-sm leading-relaxed max-w-[280px]" style={{ color: "hsl(38 24% 92% / 0.6)" }}>
               Mobile hydration infrastructure for large-scale live events. Measured delivery, food-grade certified.

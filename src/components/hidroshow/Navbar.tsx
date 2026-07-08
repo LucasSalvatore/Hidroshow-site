@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import logoImg from "@/assets/hidroshow-logo-dark.png.asset.json";
 
 const NAV_LINKS: { label: string; path: string }[] = [
   { label: "About", path: "/about" },
@@ -36,11 +37,13 @@ export default function Navbar() {
       }}
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "14px 24px" }} className="flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group">
-          <span className="inline-block w-2 h-6 bg-[hsl(var(--tap))]" />
-          <span className="heading-display text-[hsl(var(--reservoir-foreground))] text-lg tracking-[0.15em]">
-            HIDROSHOW
-          </span>
+        <Link to="/" className="flex items-center group">
+          <img
+            src={logoImg.url}
+            alt="Hidroshow"
+            className="h-6 md:h-7 w-auto"
+            style={{ display: "block" }}
+          />
         </Link>
 
         <div className="hidden md:flex items-center gap-1">
