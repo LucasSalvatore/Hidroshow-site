@@ -3,7 +3,7 @@ import Hero from "@/components/hidroshow/Hero";
 import SystemCapacity from "@/components/hidroshow/SystemCapacity";
 import ImageBand from "@/components/hidroshow/ImageBand";
 import Footer from "@/components/hidroshow/Footer";
-import stationsOutdoor from "@/assets/stations-outdoor.jpg";
+import stationsOutdoor from "@/assets/field-deployment.jpg";
 
 export default function Index() {
   return (
