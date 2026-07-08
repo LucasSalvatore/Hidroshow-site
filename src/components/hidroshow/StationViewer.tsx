@@ -3,6 +3,8 @@ import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Center } from "@react-three/drei";
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js";
 import * as THREE from "three";
+import { Store, Music, Trophy, Globe } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 function StationModel({ position = [0, 0, 0] as [number, number, number], color = "hsl(217, 91%, 60%)", scale: modelScale = 1 }) {
   const geometry = useLoader(STLLoader, "/models/station.stl");
@@ -53,11 +55,19 @@ function ComparisonScene() {
 }
 
 export default function StationViewer() {
-  const venues = [
-    { icon: "🎪", size: "Compact 200L", capacity: "Up to 5K", stations: "1–2 Stations", liters: "200–400L", color: "hsl(152, 69%, 45%)", dims: "620×360×1100mm" },
-    { icon: "🎵", size: "Standard 350L", capacity: "5K–20K", stations: "3–5 Stations", liters: "1,050–1,750L", color: "hsl(189, 94%, 43%)", dims: "700×410×1260mm" },
-    { icon: "🏟️", size: "Pro 500L", capacity: "20K–50K", stations: "6–10 Stations", liters: "3,000–5,000L", color: "hsl(217, 91%, 60%)", dims: "780×455×1425mm" },
-    { icon: "🌐", size: "Mega 750L", capacity: "50K–80K+", stations: "10–16 Stations", liters: "7,500–12,000L", color: "hsl(263, 70%, 50%)", dims: "920×520×1600mm" },
+  const venues: {
+    Icon: LucideIcon;
+    size: string;
+    capacity: string;
+    stations: string;
+    liters: string;
+    color: string;
+    dims: string;
+  }[] = [
+    { Icon: Store, size: "Compact 200L", capacity: "Up to 5K", stations: "1–2 Stations", liters: "200–400L", color: "hsl(152, 69%, 45%)", dims: "620×360×1100mm" },
+    { Icon: Music, size: "Standard 350L", capacity: "5K–20K", stations: "3–5 Stations", liters: "1,050–1,750L", color: "hsl(189, 94%, 43%)", dims: "700×410×1260mm" },
+    { Icon: Trophy, size: "Pro 500L", capacity: "20K–50K", stations: "6–10 Stations", liters: "3,000–5,000L", color: "hsl(217, 91%, 60%)", dims: "780×455×1425mm" },
+    { Icon: Globe, size: "Mega 750L", capacity: "50K–80K+", stations: "10–16 Stations", liters: "7,500–12,000L", color: "hsl(263, 70%, 50%)", dims: "920×520×1600mm" },
   ];
 
   return (
@@ -110,8 +120,8 @@ export default function StationViewer() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
         {venues.map((v) => (
           <div key={v.size} className="p-5 rounded-2xl bg-background shadow-sm border-2 card-hover text-center" style={{ borderColor: v.color + "40" }}>
-            <span className="text-3xl">{v.icon}</span>
-            <h4 className="font-display font-bold text-sm mt-2" style={{ color: v.color }}>{v.size}</h4>
+            <v.Icon className="w-7 h-7 mx-auto" style={{ color: v.color }} />
+            <h4 className="font-display font-bold text-sm mt-3" style={{ color: v.color }}>{v.size}</h4>
             <p className="text-muted-foreground text-[10px] mt-0.5">{v.dims}</p>
             <p className="text-muted-foreground text-xs mt-1">{v.capacity}</p>
             <div className="mt-3 space-y-1">
