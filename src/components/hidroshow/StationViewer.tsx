@@ -55,11 +55,19 @@ function ComparisonScene() {
 }
 
 export default function StationViewer() {
-  const venues = [
-    { icon: "🎪", size: "Compact 200L", capacity: "Up to 5K", stations: "1–2 Stations", liters: "200–400L", color: "hsl(152, 69%, 45%)", dims: "620×360×1100mm" },
-    { icon: "🎵", size: "Standard 350L", capacity: "5K–20K", stations: "3–5 Stations", liters: "1,050–1,750L", color: "hsl(189, 94%, 43%)", dims: "700×410×1260mm" },
-    { icon: "🏟️", size: "Pro 500L", capacity: "20K–50K", stations: "6–10 Stations", liters: "3,000–5,000L", color: "hsl(217, 91%, 60%)", dims: "780×455×1425mm" },
-    { icon: "🌐", size: "Mega 750L", capacity: "50K–80K+", stations: "10–16 Stations", liters: "7,500–12,000L", color: "hsl(263, 70%, 50%)", dims: "920×520×1600mm" },
+  const venues: {
+    Icon: LucideIcon;
+    size: string;
+    capacity: string;
+    stations: string;
+    liters: string;
+    color: string;
+    dims: string;
+  }[] = [
+    { Icon: Store, size: "Compact 200L", capacity: "Up to 5K", stations: "1–2 Stations", liters: "200–400L", color: "hsl(152, 69%, 45%)", dims: "620×360×1100mm" },
+    { Icon: Music, size: "Standard 350L", capacity: "5K–20K", stations: "3–5 Stations", liters: "1,050–1,750L", color: "hsl(189, 94%, 43%)", dims: "700×410×1260mm" },
+    { Icon: Trophy, size: "Pro 500L", capacity: "20K–50K", stations: "6–10 Stations", liters: "3,000–5,000L", color: "hsl(217, 91%, 60%)", dims: "780×455×1425mm" },
+    { Icon: Globe, size: "Mega 750L", capacity: "50K–80K+", stations: "10–16 Stations", liters: "7,500–12,000L", color: "hsl(263, 70%, 50%)", dims: "920×520×1600mm" },
   ];
 
   return (
