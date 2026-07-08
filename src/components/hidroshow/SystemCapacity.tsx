@@ -73,8 +73,8 @@ export default function SystemCapacity() {
       >
         {([
           { id: "auto", label: "Auto" },
-          { id: "reservoir", label: "Reservoir" },
-          { id: "glow", label: "Glow" },
+          { id: "festival", label: "Festival" },
+          { id: "drop", label: "Drop" },
         ] as const).map((opt) => (
           <button
             key={opt.id}
