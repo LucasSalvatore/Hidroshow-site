@@ -1,12 +1,4 @@
-import PageLayout from "@/components/hidroshow/PageLayout";
+import Layout from "@/components/hidroshow/Layout";
 import Solution from "@/components/hidroshow/Solution";
-import SWOT from "@/components/hidroshow/SWOT";
-
-export default function SolutionPage() {
-  return (
-    <PageLayout title="Our Solution — Hidroshow">
-      <Solution />
-      <SWOT />
-    </PageLayout>
-  );
-}
+import Station from "@/components/hidroshow/Station";
+export default function SolutionPage() { return <Layout><Solution /><Station /></Layout>; }

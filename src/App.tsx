@@ -4,10 +4,10 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
-import AboutPage from "./pages/AboutPage.tsx";
 import ProblemPage from "./pages/ProblemPage.tsx";
 import SolutionPage from "./pages/SolutionPage.tsx";
-import ProductsPage from "./pages/ProductsPage.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
+import ImpactPage from "./pages/ImpactPage.tsx";
 import ContactPage from "./pages/ContactPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -21,12 +21,11 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutPage />} />
           <Route path="/problem" element={<ProblemPage />} />
           <Route path="/solution" element={<SolutionPage />} />
-          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/impact" element={<ImpactPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

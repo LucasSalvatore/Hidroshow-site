@@ -1,27 +1,16 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-waterdrop.jpg";
-import heroVideo1 from "@/assets/hero-waterdrop-1.mp4.asset.json";
-import heroVideo2 from "@/assets/hero-waterdrop-2.mp4.asset.json";
-import heroVideo3 from "@/assets/hero-waterdrop-3.mp4.asset.json";
-
-const HERO_CLIPS = [heroVideo1.url, heroVideo2.url, heroVideo3.url];
-const MIN_CYCLE_MS = 12000;
-const FADE_MS = 900;
+import { usePrefersReducedMotion } from "./useCountUp";
 
 export default function Hero() {
+  const reducedMotion = usePrefersReducedMotion();
   const [count, setCount] = useState(0);
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [nextIdx, setNextIdx] = useState(1);
-  const [showA, setShowA] = useState(true);
-  const cycleStartRef = useRef<number>(Date.now());
-  const transitioningRef = useRef(false);
-  const videoA = useRef<HTMLVideoElement>(null);
-  const videoB = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    let start = 0;
     const end = 120000;
+    if (reducedMotion) { setCount(end); return; }
+    let start = 0;
     const dur = 2000;
     const step = end / (dur / 16);
     const timer = setInterval(() => {
@@ -30,103 +19,15 @@ export default function Hero() {
       else setCount(Math.floor(start));
     }, 16);
     return () => clearInterval(timer);
-  }, []);
-
-  const doTransition = useCallback(() => {
-    if (transitioningRef.current) return;
-    transitioningRef.current = true;
-
-    // Start the incoming clip from its first frame so the crossfade is clean
-    const incomingVideo = showA ? videoB.current : videoA.current;
-    if (incomingVideo) incomingVideo.currentTime = 0;
-
-    // Crossfade to the preloaded inactive player
-    setShowA((s) => !s);
-
-    window.setTimeout(() => {
-      const newActive = nextIdx;
-      const newNext = (nextIdx + 1) % HERO_CLIPS.length;
-      setActiveIdx(newActive);
-      setNextIdx(newNext);
-      cycleStartRef.current = Date.now();
-
-      // Load the upcoming clip into the now-inactive player so it is ready
-      const inactiveVideo = showA ? videoA.current : videoB.current;
-      if (inactiveVideo) {
-        inactiveVideo.src = HERO_CLIPS[newNext];
-        inactiveVideo.load();
-        inactiveVideo.play().catch(() => {});
-      }
-      transitioningRef.current = false;
-    }, FADE_MS);
-  }, [nextIdx, showA]);
-
-  const handleEnded = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
-    const activeVideo = showA ? videoA.current : videoB.current;
-
-    if (e.currentTarget !== activeVideo) {
-      // The hidden preloader ended; keep it playing from the start so it is always ready
-      e.currentTarget.currentTime = 0;
-      e.currentTarget.play().catch(() => {});
-      return;
-    }
-
-    const elapsed = Date.now() - cycleStartRef.current;
-    if (elapsed >= MIN_CYCLE_MS) {
-      doTransition();
-    } else {
-      // Replay the current clip until the minimum display time is met
-      e.currentTarget.currentTime = 0;
-      e.currentTarget.play().catch(() => {});
-    }
-  }, [doTransition, showA]);
-
-  // Initial load: start the visible clip and begin playing the next clip behind it
-  useEffect(() => {
-    const a = videoA.current;
-    const b = videoB.current;
-    if (a) {
-      a.src = HERO_CLIPS[activeIdx];
-      a.load();
-      a.play().catch(() => {});
-    }
-    if (b) {
-      b.src = HERO_CLIPS[nextIdx];
-      b.load();
-      b.play().catch(() => {});
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const videoBaseClass = "absolute inset-0 w-full h-full object-cover object-center";
-  const videoTransition = { transition: `opacity ${FADE_MS}ms ease-in-out` };
+  }, [reducedMotion]);
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-[hsl(var(--reservoir))]">
-      {/* Two-layer video crossfade — one always playing so swaps are seamless */}
-      <video
-        ref={videoA}
-        poster={heroImg}
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-        onEnded={handleEnded}
+      <img
+        src={heroImg}
+        alt=""
         aria-hidden
-        className={videoBaseClass}
-        style={{ ...videoTransition, opacity: showA ? 1 : 0 }}
-      />
-      <video
-        ref={videoB}
-        poster={heroImg}
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-        onEnded={handleEnded}
-        aria-hidden
-        className={videoBaseClass}
-        style={{ ...videoTransition, opacity: showA ? 0 : 1 }}
+        className="absolute inset-0 w-full h-full object-cover object-center"
       />
 
       {/* Dark scrim from left */}
@@ -137,10 +38,8 @@ export default function Hero() {
             "linear-gradient(90deg, hsl(198 45% 8% / 0.95) 0%, hsl(198 45% 10% / 0.85) 40%, hsl(198 45% 12% / 0.55) 70%, hsl(198 45% 14% / 0.25) 100%)",
         }}
       />
-      {/* Bottom vignette for text contrast on small screens */}
       <div className="absolute inset-0 md:hidden" style={{ background: "linear-gradient(180deg, hsl(198 45% 10% / 0.55) 0%, hsl(198 45% 10% / 0.85) 100%)" }} />
 
-      {/* Smooth fade into the next section (SystemCapacity uses hsl(198 45% 14%)) */}
       <div
         aria-hidden
         className="absolute inset-x-0 bottom-0 pointer-events-none z-[2]"
@@ -153,7 +52,6 @@ export default function Hero() {
 
       <div className="relative w-full" style={{ maxWidth: 1280, margin: "0 auto", padding: "140px 24px 220px" }}>
         <div className="max-w-2xl text-[hsl(var(--reservoir-foreground))]">
-          {/* Spec plate */}
           <div className="mb-8 inline-flex items-center gap-3">
             <span className="badge-label badge-on-dark">
               <span className="inline-block w-1.5 h-1.5 bg-[hsl(var(--tap))]" />
@@ -168,11 +66,10 @@ export default function Hero() {
             NO SHOW.
           </h1>
 
-          <p className="text-[hsl(var(--reservoir-foreground))/0.75] text-base md:text-lg leading-relaxed max-w-xl mb-10" style={{ color: "hsl(38 24% 92% / 0.78)" }}>
+          <p className="text-base md:text-lg leading-relaxed max-w-xl mb-10" style={{ color: "hsl(38 24% 92% / 0.78)" }}>
             Mobile hydration infrastructure for festivals, stadiums, and large-scale live events. Food-grade water delivered at volume — measured, monitored, and free at the point of use.
           </p>
 
-          {/* Stat block — the visual anchor */}
           <div className="mb-10 border-y border-[hsl(38_24%_92%/0.15)] py-6">
             <div className="gauge-ticks gauge-ticks-on-dark mb-5" />
             <div className="grid grid-cols-3 gap-6 md:gap-10">
@@ -212,10 +109,9 @@ export default function Hero() {
             </Link>
           </div>
 
-          {/* Certification plate */}
           <div className="mt-10 inline-flex items-center gap-3">
             <span className="badge-label" style={{ color: "hsl(var(--signal))", borderColor: "hsl(var(--signal) / 0.5)", borderLeftColor: "hsl(var(--signal))" }}>
-              FOOD-GRADE CERTIFIED · NSF-61
+              FOOD-GRADE MATERIALS
             </span>
           </div>
         </div>
