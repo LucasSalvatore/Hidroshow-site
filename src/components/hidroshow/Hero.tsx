@@ -2,14 +2,6 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-festival.jpg";
 
-function WaterDrop({ style }: { style: React.CSSProperties }) {
-  return (
-    <svg viewBox="0 0 32 44" style={{ position: "absolute", opacity: 0.06, ...style }}>
-      <path d="M16 1 C16 1 1 17 1 27 C1 36.4 7.8 43 16 43 C24.2 43 31 36.4 31 27 C31 17 16 1 16 1Z" fill="hsl(217,91%,60%)" />
-    </svg>
-  );
-}
-
 export default function Hero() {
   const [count, setCount] = useState(0);
   useEffect(() => {
@@ -26,59 +18,93 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(210,33%,97%) 0%, hsl(213,94%,95%) 100%)" }}>
-      {[
-        { top: "8%", left: "5%", width: 80 }, { top: "15%", right: "8%", width: 60 },
-        { bottom: "20%", left: "3%", width: 50 }, { top: "40%", right: "4%", width: 90 },
-        { bottom: "8%", right: "15%", width: 45 }, { top: "60%", left: "8%", width: 35 }
-      ].map((s, i) => <WaterDrop key={i} style={s} />)}
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-[hsl(var(--reservoir))]">
+      {/* Full-bleed photo */}
+      <img
+        src={heroImg}
+        alt="Festival crowd at sunset"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
+      />
+      {/* Dark scrim from left */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(90deg, hsl(198 45% 8% / 0.95) 0%, hsl(198 45% 10% / 0.85) 40%, hsl(198 45% 12% / 0.55) 70%, hsl(198 45% 14% / 0.25) 100%)",
+        }}
+      />
+      {/* Bottom vignette for text contrast on small screens */}
+      <div className="absolute inset-0 md:hidden" style={{ background: "linear-gradient(180deg, hsl(198 45% 10% / 0.55) 0%, hsl(198 45% 10% / 0.85) 100%)" }} />
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "120px 24px 80px", display: "grid", gridTemplateColumns: "1fr", gap: 60, width: "100%" }}>
-        <div className="lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
-          {/* Left */}
-          <div>
-            <span className="badge-label mb-6 inline-block">🌊 NOW SERVING EVENTS NATIONWIDE</span>
+      <div className="relative w-full" style={{ maxWidth: 1280, margin: "0 auto", padding: "140px 24px 100px" }}>
+        <div className="max-w-2xl text-[hsl(var(--reservoir-foreground))]">
+          {/* Spec plate */}
+          <div className="mb-8 inline-flex items-center gap-3">
+            <span className="badge-label badge-on-dark">
+              <span className="inline-block w-1.5 h-1.5 bg-[hsl(var(--tap))]" />
+              UNIT 001 · SERVING EVENTS NATIONWIDE
+            </span>
+          </div>
 
-            <h1 className="heading-display text-5xl md:text-6xl lg:text-7xl leading-none mb-2 text-foreground">
-              NO WATER,
-            </h1>
-            <h1 className="heading-display text-5xl md:text-6xl lg:text-7xl leading-none mb-6 text-primary">
-              NO SHOW.
-            </h1>
+          <h1 className="heading-display text-[15vw] sm:text-7xl md:text-8xl lg:text-[8rem] leading-[0.88] mb-1">
+            NO WATER,
+          </h1>
+          <h1 className="heading-display text-[15vw] sm:text-7xl md:text-8xl lg:text-[8rem] leading-[0.88] mb-8 text-[hsl(var(--tap))]">
+            NO SHOW.
+          </h1>
 
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-lg mb-8">
-              Mobile hydration stations delivering free, safe, clean water to thousands of event attendees. Turning hydration into safety and sustainability.
-            </p>
+          <p className="text-[hsl(var(--reservoir-foreground))/0.75] text-base md:text-lg leading-relaxed max-w-xl mb-10" style={{ color: "hsl(38 24% 92% / 0.78)" }}>
+            Mobile hydration infrastructure for festivals, stadiums, and large-scale live events. Food-grade water delivered at volume — measured, monitored, and free at the point of use.
+          </p>
 
-            <div className="flex flex-wrap gap-4 mb-10">
-              <Link to="/contact" className="btn-primary no-underline">
-                BOOK FOR YOUR EVENT
-              </Link>
-              <Link to="/solution" className="btn-outline-hero no-underline">
-                SEE HOW IT WORKS
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-3 gap-4">
-              {[["400–500L", "Per Station"], [count.toLocaleString() + "L", "Per 50K People"], ["3 SDGs", "Aligned"]].map(([num, label]) => (
-                <div key={label} className="text-center p-3 rounded-xl bg-background/60">
-                  <p className="stat-number text-xl md:text-2xl">{num}</p>
-                  <p className="text-muted-foreground text-xs mt-1">{label}</p>
+          {/* Stat block — the visual anchor */}
+          <div className="mb-10 border-y border-[hsl(38_24%_92%/0.15)] py-6">
+            <div className="gauge-ticks gauge-ticks-on-dark mb-5" />
+            <div className="grid grid-cols-3 gap-6 md:gap-10">
+              {[
+                { num: "500", unit: "L", label: "Per station" },
+                { num: count.toLocaleString(), unit: "L", label: "Per 50K attendees" },
+                { num: "03", unit: "", label: "UN SDGs aligned" },
+              ].map((s, i) => (
+                <div key={i}>
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-mono-num text-3xl md:text-5xl font-semibold text-[hsl(var(--reservoir-foreground))] tabular-nums">
+                      {s.num}
+                    </span>
+                    {s.unit && (
+                      <span className="font-mono-num text-lg md:text-2xl font-medium text-[hsl(var(--tap))]">
+                        {s.unit}
+                      </span>
+                    )}
+                  </div>
+                  <p
+                    className="font-mono-num mt-2 text-[10px] md:text-[11px] uppercase tracking-[0.2em]"
+                    style={{ color: "hsl(38 24% 92% / 0.6)" }}
+                  >
+                    {s.label}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right - Image */}
-          <div className="hidden lg:block relative">
-            <div className="rounded-3xl overflow-hidden shadow-2xl">
-              <img src={heroImg} alt="Festival crowd at sunset" className="w-full h-auto object-cover" fetchPriority="high" loading="eager" decoding="async" />
-            </div>
-            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2">
-              <span className="inline-block px-4 py-2 rounded-full bg-success text-primary-foreground font-display font-bold text-xs tracking-wider shadow-lg" style={{ background: "hsl(152,69%,31%)" }}>
-                FOOD-GRADE ✓
-              </span>
-            </div>
+          <div className="flex flex-wrap gap-3">
+            <Link to="/contact" className="btn-primary no-underline" style={{ background: "hsl(var(--tap))", borderColor: "hsl(var(--tap))", color: "hsl(var(--reservoir-foreground))" }}>
+              Book for your event →
+            </Link>
+            <Link to="/solution" className="btn-outline-hero no-underline">
+              How the system works
+            </Link>
+          </div>
+
+          {/* Certification plate */}
+          <div className="mt-10 inline-flex items-center gap-3">
+            <span className="badge-label" style={{ color: "hsl(var(--signal))", borderColor: "hsl(var(--signal) / 0.5)", borderLeftColor: "hsl(var(--signal))" }}>
+              FOOD-GRADE CERTIFIED · NSF-61
+            </span>
           </div>
         </div>
       </div>

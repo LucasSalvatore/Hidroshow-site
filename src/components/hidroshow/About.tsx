@@ -6,90 +6,83 @@ export default function About() {
   return (
     <section id="about" className="section-padding section-light">
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Left - Mission */}
+        <AnimSection className="mb-16 max-w-3xl">
+          <span className="badge-label mb-5 inline-block">DIVISION · ABOUT</span>
+          <h2 className="heading-section text-[hsl(var(--reservoir))] mb-5">Built for Live Event Infrastructure</h2>
+          <div className="gauge-ticks max-w-sm mt-6" />
+        </AnimSection>
+
+        <div className="grid lg:grid-cols-2 gap-10">
           <AnimSection>
-            <span className="badge-label mb-4 inline-block">OUR MISSION & VISION</span>
-            <h2 className="heading-section text-foreground mb-8">Why We Built Hidroshow</h2>
-
-            <div className="mb-6 p-6 rounded-2xl bg-background shadow-sm border border-border">
-              <h4 className="font-display font-bold text-sm text-primary mb-2">🎯 MISSION</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                To eliminate the hydration gap at large-scale events by providing mobile, sustainable water stations that deliver free, clean water to every attendee.
+            <div className="mb-5 p-8 bg-card border border-border" style={{ borderRadius: 3 }}>
+              <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-3">MISSION</h4>
+              <p className="text-foreground text-base leading-relaxed">
+                Eliminate the hydration gap at large-scale events by deploying mobile, sustainable water infrastructure that delivers free, clean water to every attendee — at the volumes real events demand.
               </p>
             </div>
 
-            <div className="mb-6 p-6 rounded-2xl bg-background shadow-sm border border-border">
-              <h4 className="font-display font-bold text-sm text-primary mb-2">🔭 VISION</h4>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                A world where no event-goer suffers from dehydration, and where every large gathering becomes a model of sustainable water management.
+            <div className="mb-5 p-8 bg-card border border-border" style={{ borderRadius: 3 }}>
+              <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-3">VISION</h4>
+              <p className="text-foreground text-base leading-relaxed">
+                A live-events industry where no attendee suffers dehydration and every large gathering runs on a measurable, closed-loop water system.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-background shadow-sm border border-border">
-              <h4 className="font-display font-bold text-sm text-primary mb-4">👥 THE TEAM</h4>
-              <div className="flex flex-wrap gap-3">
+            <div className="p-8 bg-card border border-border" style={{ borderRadius: 3 }}>
+              <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-4">TEAM</h4>
+              <div className="grid grid-cols-2 gap-3">
                 {[
                   { name: "Pedro Justa", role: "CEO" },
                   { name: "Shery Imran", role: "Co-CEO" },
                   { name: "Joshua Bracero", role: "CFO & CMO" },
                   { name: "Noah Mazard", role: "COO" },
                 ].map(({ name, role }) => (
-                  <div key={name} className="flex items-center gap-2 px-3 py-2 rounded-full bg-secondary">
-                    <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="font-display font-bold text-[10px] text-primary">
-                        {name.split(" ").map(n => n[0]).join("")}
-                      </span>
-                    </div>
+                  <div key={name} className="flex items-center gap-3 py-2 border-t border-border">
+                    <span className="font-mono-num text-[10px] text-[hsl(var(--tap))] w-8">
+                      {name.split(" ").map(n => n[0]).join("")}
+                    </span>
                     <div className="flex flex-col">
-                      <span className="text-foreground text-xs font-medium">{name}</span>
-                      <span className="text-muted-foreground text-[10px]">{role}</span>
+                      <span className="text-foreground text-sm font-medium">{name}</span>
+                      <span className="font-mono-num text-muted-foreground text-[10px] tracking-widest uppercase">{role}</span>
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Team photo */}
-              <div className="mt-5 rounded-2xl overflow-hidden shadow-md">
+              <div className="mt-6 overflow-hidden border border-border" style={{ borderRadius: 3 }}>
                 <img src={teamImg} alt="Hidroshow founding team at the 2026 Social Entrepreneurship Poster Competition" loading="lazy" decoding="async" className="w-full h-auto object-cover" />
               </div>
             </div>
 
-            {/* Achievement badge */}
-            <div className="mt-6 p-5 rounded-2xl border-2 border-amber/30 bg-amber/5">
-              <div className="flex items-start gap-3">
-                <span className="text-3xl">🏆</span>
-                <div>
-                  <h4 className="font-display font-bold text-foreground text-sm">3rd Place — Social Entrepreneurship Poster Competition</h4>
-                  <p className="text-muted-foreground text-xs mt-1 leading-relaxed">
-                    This business concept won 3rd place and received approval from faculty members at Montclair State University's 2026 Social Entrepreneurship Poster Competition.
-                  </p>
-                </div>
-              </div>
+            <div className="mt-5 p-6 border" style={{ borderRadius: 3, borderColor: "hsl(var(--signal) / 0.4)", borderLeft: "3px solid hsl(var(--signal))", background: "hsl(var(--signal) / 0.06)" }}>
+              <span className="badge-label badge-signal mb-3 inline-block">RECOGNITION</span>
+              <h4 className="heading-display text-lg text-[hsl(var(--reservoir))]">3rd Place · Social Entrepreneurship Poster Competition</h4>
+              <p className="text-muted-foreground text-sm mt-2 leading-relaxed">
+                Business concept recognized and approved by faculty at Montclair State University's 2026 Social Entrepreneurship Poster Competition.
+              </p>
             </div>
           </AnimSection>
 
-          {/* Right - Target Market */}
           <AnimSection delay={0.15}>
-            <span className="badge-label mb-4 inline-block">TARGET MARKET ANALYSIS</span>
-            <h2 className="heading-section text-foreground mb-8">Who We Serve</h2>
+            <span className="badge-label mb-5 inline-block">TARGET MARKET</span>
+            <h3 className="heading-display text-3xl md:text-4xl text-[hsl(var(--reservoir))] mb-6">Who We Serve</h3>
 
             {[
-              { icon: "🎵", title: "Concerts & Music Festivals", desc: "30K–80K+ attendees per event. High heat, high energy = critical hydration need." },
-              { icon: "🏟️", title: "Stadiums & Sports Events", desc: "Recurring demand, long-term contracts, ideal for venue partnership model." },
-              { icon: "🌿", title: "Eco-Conscious Organizers", desc: "Events pursuing zero-waste or sustainability certifications." },
-              { icon: "🏢", title: "Corporate & Public Events", desc: "Brand-conscious organizers who value sponsorship visibility." },
-            ].map((item, i) => (
-              <div key={i} className="flex gap-4 mb-4 p-5 rounded-2xl bg-background shadow-sm border border-border card-hover">
-                <span className="text-2xl">{item.icon}</span>
+              { code: "01", title: "Concerts & Music Festivals", desc: "30K–80K+ attendees per event. High heat, high energy, critical hydration demand." },
+              { code: "02", title: "Stadiums & Sports Venues", desc: "Recurring demand, long-term contracts, ideal for the venue partnership model." },
+              { code: "03", title: "Eco-Conscious Organizers", desc: "Events pursuing zero-waste or sustainability certifications." },
+              { code: "04", title: "Corporate & Public Events", desc: "Brand-conscious organizers who value sponsorship visibility." },
+            ].map((item) => (
+              <div key={item.code} className="flex gap-5 mb-3 p-5 bg-card border border-border card-hover" style={{ borderRadius: 3 }}>
+                <span className="font-mono-num text-2xl text-[hsl(var(--tap))] leading-none">{item.code}</span>
                 <div>
-                  <h4 className="font-display font-bold text-foreground text-sm">{item.title}</h4>
-                  <p className="text-muted-foreground text-xs mt-1 leading-relaxed">{item.desc}</p>
+                  <h4 className="heading-display text-base text-[hsl(var(--reservoir))]">{item.title}</h4>
+                  <p className="text-muted-foreground text-sm mt-1 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
 
-            <div className="mt-6 rounded-2xl overflow-hidden shadow-lg">
+            <div className="mt-6 overflow-hidden border border-border" style={{ borderRadius: 3 }}>
               <img src={crowdImg} alt="Festival crowd" loading="lazy" decoding="async" className="w-full h-64 md:h-80 object-cover" />
             </div>
           </AnimSection>

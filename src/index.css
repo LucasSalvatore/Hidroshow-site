@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,197 +6,240 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-    --primary-dark: 224 76% 48%;
-    --secondary: 213 94% 95%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 217 91% 60%;
-    --radius: 0.75rem;
+    /* Sand background */
+    --background: 38 28% 94%;
+    --foreground: 200 30% 12%;
 
-    /* Hidroshow specific */
-    --hero-gradient: linear-gradient(135deg, hsl(217 91% 60%), hsl(224 76% 48%));
-    --section-light: 210 33% 97%;
-    --navy: 222 47% 11%;
-    --navy-foreground: 210 40% 98%;
-    --success: 152 69% 31%;
-    --cyan: 189 94% 43%;
-    --purple: 263 70% 50%;
-    --amber: 38 92% 50%;
+    --card: 38 24% 97%;
+    --card-foreground: 200 30% 12%;
+    --popover: 38 24% 97%;
+    --popover-foreground: 200 30% 12%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Tap — the one water accent, used sparingly */
+    --primary: 192 68% 38%;
+    --primary-foreground: 38 28% 96%;
+    --primary-dark: 198 45% 14%;
+
+    /* Sand-tone secondary surface */
+    --secondary: 38 22% 88%;
+    --secondary-foreground: 200 30% 12%;
+
+    --muted: 38 18% 86%;
+    --muted-foreground: 200 15% 34%;
+
+    --accent: 38 22% 88%;
+    --accent-foreground: 200 30% 12%;
+
+    --destructive: 0 65% 42%;
+    --destructive-foreground: 38 28% 96%;
+
+    --border: 200 15% 80%;
+    --input: 200 15% 78%;
+    --ring: 192 68% 38%;
+    --radius: 0.25rem;
+
+    /* Brand-specific */
+    --reservoir: 198 45% 14%;
+    --reservoir-foreground: 38 28% 94%;
+    --tap: 192 68% 38%;
+    --sand: 38 28% 94%;
+    --signal: 28 65% 45%;
+    --ink: 200 30% 12%;
+
+    /* Back-compat aliases */
+    --navy: 198 45% 14%;
+    --navy-foreground: 38 28% 94%;
+    --section-light: 38 24% 91%;
+    --success: 165 55% 30%;
+    --cyan: 192 68% 38%;
+    --purple: 210 25% 30%;
+    --amber: 28 65% 45%;
+
+    --sidebar-background: 38 28% 94%;
+    --sidebar-foreground: 200 30% 12%;
+    --sidebar-primary: 198 45% 14%;
+    --sidebar-primary-foreground: 38 28% 96%;
+    --sidebar-accent: 38 22% 88%;
+    --sidebar-accent-foreground: 200 30% 12%;
+    --sidebar-border: 200 15% 80%;
+    --sidebar-ring: 192 68% 38%;
   }
 
   .dark {
-    --background: 222 84% 5%;
-    --foreground: 210 40% 98%;
-    --card: 222 84% 5%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 84% 5%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 217 33% 18%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 18%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 213 27% 84%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 198 45% 8%;
+    --foreground: 38 24% 92%;
+    --card: 198 45% 10%;
+    --card-foreground: 38 24% 92%;
+    --popover: 198 45% 10%;
+    --popover-foreground: 38 24% 92%;
+    --primary: 192 68% 45%;
+    --primary-foreground: 198 45% 8%;
+    --secondary: 198 30% 16%;
+    --secondary-foreground: 38 24% 92%;
+    --muted: 198 30% 16%;
+    --muted-foreground: 38 12% 68%;
+    --accent: 198 30% 16%;
+    --accent-foreground: 38 24% 92%;
+    --destructive: 0 65% 42%;
+    --destructive-foreground: 38 24% 92%;
+    --border: 198 25% 20%;
+    --input: 198 25% 20%;
+    --ring: 192 68% 45%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  * { @apply border-border; }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
-    font-feature-settings: 'cv11', 'ss01', 'ss03';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lexend', sans-serif;
-    letter-spacing: -0.02em;
+    font-family: 'Big Shoulders Display', 'Archivo', sans-serif;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-weight: 800;
   }
   p { letter-spacing: -0.005em; }
-  ::selection { background: hsl(var(--primary) / 0.2); color: hsl(var(--primary-dark)); }
+  ::selection { background: hsl(var(--tap) / 0.25); color: hsl(var(--reservoir)); }
 }
 
 @layer components {
+  .font-mono-num {
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
   .heading-display {
-    font-family: 'Lexend', sans-serif;
-    @apply font-extrabold tracking-tight;
+    font-family: 'Big Shoulders Display', sans-serif;
+    @apply font-black tracking-wide uppercase;
   }
   .heading-section {
-    font-family: 'Lexend', sans-serif;
-    @apply font-bold text-3xl md:text-4xl lg:text-5xl;
-    letter-spacing: -0.03em;
+    font-family: 'Big Shoulders Display', sans-serif;
+    @apply font-extrabold text-3xl md:text-4xl lg:text-5xl uppercase tracking-wide;
   }
+
+  /* Buttons — rectangular, no glow */
   .btn-primary {
-    @apply inline-block px-8 py-3.5 rounded-full font-bold text-sm tracking-wider bg-primary text-primary-foreground shadow-lg transition-all duration-200;
-    font-family: 'Lexend', sans-serif;
-    box-shadow: 0 8px 25px hsl(var(--primary) / 0.35);
+    @apply inline-flex items-center justify-center px-7 py-3 font-bold text-xs tracking-[0.15em] uppercase transition-colors duration-150;
+    font-family: 'Big Shoulders Display', sans-serif;
+    background: hsl(var(--reservoir));
+    color: hsl(var(--reservoir-foreground));
+    border-radius: 3px;
+    border: 1px solid hsl(var(--reservoir));
   }
   .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 35px hsl(var(--primary) / 0.45);
+    background: hsl(var(--tap));
+    border-color: hsl(var(--tap));
   }
   .btn-outline-hero {
-    @apply inline-block px-8 py-3.5 rounded-full font-bold text-sm tracking-wider bg-background text-primary border-2 border-primary transition-all duration-200;
-    font-family: 'Lexend', sans-serif;
+    @apply inline-flex items-center justify-center px-7 py-3 font-bold text-xs tracking-[0.15em] uppercase transition-colors duration-150;
+    font-family: 'Big Shoulders Display', sans-serif;
+    background: transparent;
+    color: hsl(var(--reservoir-foreground));
+    border: 1px solid hsl(var(--reservoir-foreground) / 0.5);
+    border-radius: 3px;
   }
   .btn-outline-hero:hover {
-    @apply bg-primary text-primary-foreground;
+    background: hsl(var(--reservoir-foreground) / 0.08);
+    border-color: hsl(var(--reservoir-foreground));
   }
-  .section-padding {
-    @apply py-24 md:py-32 lg:py-40 px-4 md:px-8;
-  }
-  .section-divider {
-    @apply relative;
-  }
-  .section-divider::before {
-    content: '';
-    @apply absolute top-0 left-1/2 -translate-x-1/2 w-24 h-px;
-    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
-  }
-  .section-light {
-    background: hsl(var(--section-light));
-  }
-  .card-hover {
-    @apply transition-all duration-300;
-  }
-  .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px hsl(var(--primary) / 0.12);
-  }
-  .nav-link-active {
-    @apply text-primary;
-    background: hsl(var(--primary) / 0.08);
-  }
+
+  .section-padding { @apply py-20 md:py-28 px-4 md:px-8; }
+  .section-light { background: hsl(var(--section-light)); }
+
+  .card-hover { @apply transition-colors duration-200; }
+  .card-hover:hover { border-color: hsl(var(--tap) / 0.5); }
+
   .stat-number {
-    font-family: 'Lexend', sans-serif;
-    @apply font-extrabold text-primary;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    @apply font-semibold;
+    color: hsl(var(--reservoir));
+    letter-spacing: -0.02em;
   }
+
+  /* Spec-plate badge — equipment certification tag */
   .badge-label {
-    font-family: 'Lexend', sans-serif;
-    @apply inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest bg-secondary text-primary;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 5px 10px;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: hsl(var(--reservoir));
+    background: transparent;
+    border: 1px solid hsl(var(--reservoir) / 0.35);
+    border-left: 3px solid hsl(var(--tap));
+    border-radius: 2px;
+  }
+  .badge-signal {
+    color: hsl(var(--signal));
+    border-color: hsl(var(--signal) / 0.4);
+    border-left-color: hsl(var(--signal));
+  }
+  .badge-on-dark {
+    color: hsl(var(--reservoir-foreground));
+    border-color: hsl(var(--reservoir-foreground) / 0.35);
+    border-left-color: hsl(var(--tap));
+  }
+
+  /* Gauge / tick-mark motif — brand signature */
+  .gauge-ticks {
+    position: relative;
+    height: 14px;
+    border-top: 1px solid hsl(var(--reservoir) / 0.55);
+    background-image: repeating-linear-gradient(
+      to right,
+      hsl(var(--reservoir) / 0.55) 0,
+      hsl(var(--reservoir) / 0.55) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+    background-size: 12px 8px;
+    background-repeat: repeat-x;
+    background-position: top left;
+  }
+  .gauge-ticks-tall {
+    height: 22px;
+    background-image:
+      repeating-linear-gradient(to right,
+        hsl(var(--reservoir)) 0, hsl(var(--reservoir)) 1px,
+        transparent 1px, transparent 60px),
+      repeating-linear-gradient(to right,
+        hsl(var(--reservoir) / 0.55) 0, hsl(var(--reservoir) / 0.55) 1px,
+        transparent 1px, transparent 12px);
+    background-size: 60px 14px, 12px 8px;
+    background-repeat: repeat-x, repeat-x;
+    background-position: top left, top left;
+  }
+  .gauge-ticks-on-dark {
+    border-top-color: hsl(var(--reservoir-foreground) / 0.5);
+    background-image: repeating-linear-gradient(
+      to right,
+      hsl(var(--reservoir-foreground) / 0.5) 0,
+      hsl(var(--reservoir-foreground) / 0.5) 1px,
+      transparent 1px,
+      transparent 12px
+    );
   }
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
-/* Animations */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes pulse-water {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-.animate-fade-up {
-  animation: fade-up 0.6s ease-out both;
-}
-.animate-pulse-water {
-  animation: pulse-water 2s ease-in-out infinite;
-}
+.animate-fade-up { animation: fade-up 0.6s ease-out both; }
 
-/* Premium scrollbar */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: hsl(var(--muted)); }
-::-webkit-scrollbar-thumb { background: hsl(var(--primary) / 0.4); border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.7); }
-
-/* Subtle section transition gradient */
-.section-fade-top {
-  position: relative;
-}
-.section-fade-top::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 80px;
-  background: linear-gradient(to bottom, hsl(var(--background)), transparent);
-  pointer-events: none;
-  z-index: 1;
-}
+::-webkit-scrollbar-track { background: hsl(var(--secondary)); }
+::-webkit-scrollbar-thumb { background: hsl(var(--reservoir) / 0.4); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--reservoir) / 0.7); }
