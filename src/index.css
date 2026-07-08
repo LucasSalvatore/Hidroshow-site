@@ -245,11 +245,6 @@ html { scroll-behavior: smooth; }
 }
 .animate-headline-glow { animation: headline-glow 3s ease-in-out infinite; }
 
-@keyframes gauge-scan {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(400%); }
-}
-
 .stat-card {
   transition: transform 0.3s ease, border-color 0.3s ease;
 }
