@@ -31,10 +31,16 @@ export default function SystemCapacity() {
     <section
       id="capacity"
       ref={ref}
-      className="section-padding"
-      style={{ background: "hsl(var(--reservoir))", color: "hsl(var(--reservoir-foreground))" }}
+      className="section-padding relative overflow-hidden capacity-bg"
+      style={{ color: "hsl(var(--reservoir-foreground))" }}
     >
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      {/* Animated background layers */}
+      <div className="capacity-bg-layer capacity-bg-gradient" aria-hidden />
+      <div className="capacity-bg-layer capacity-bg-grid" aria-hidden />
+      <div className="capacity-bg-layer capacity-bg-orb capacity-bg-orb-1" aria-hidden />
+      <div className="capacity-bg-layer capacity-bg-orb capacity-bg-orb-2" aria-hidden />
+      <div className="capacity-bg-layer capacity-bg-scan" aria-hidden />
+      <div className="relative z-10" style={{ maxWidth: 1200, margin: "0 auto" }}>
         <AnimSection className="flex flex-wrap items-center justify-between gap-4 mb-10">
           <div className="flex items-center gap-3">
             <span
