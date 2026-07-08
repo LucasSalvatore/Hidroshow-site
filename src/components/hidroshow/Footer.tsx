@@ -1,6 +1,14 @@
+import { Link } from "react-router-dom";
 import hidroshowLogo from "@/assets/hidroshow-logo.png";
 
 const FOOTER_NAV = [
+  { label: "Problem", to: "/problem" },
+  { label: "Solution", to: "/solution" },
+  { label: "About", to: "/about" },
+  { label: "Impact", to: "/impact" },
+  { label: "Contact", to: "/contact" },
+];
+const _OLD = [
   { label: "Problem", id: "problem" },
   { label: "Solution", id: "solution" },
   { label: "About", id: "about" },
