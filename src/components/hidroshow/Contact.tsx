@@ -56,7 +56,7 @@ export default function Contact() {
         <div className="grid lg:grid-cols-5 gap-6">
           <AnimSection className="lg:col-span-2">
             {/* PLACEHOLDER contact details — replace with real channels before launch */}
-            <div className="p-6 bg-card border border-border" style={{ borderRadius: 3 }}>
+            <div className="p-6 card-elevated" style={{ borderRadius: 3 }}>
               <span className="badge-label mb-4 inline-block">DIRECT CHANNELS</span>
               {[
                 { label: "Email", val: "hello@hidroshow.com" },
@@ -83,14 +83,14 @@ export default function Contact() {
 
           <AnimSection className="lg:col-span-3" delay={0.1}>
             {submitted ? (
-              <div className="p-12 bg-card border border-border" style={{ borderRadius: 3 }} role="status">
+              <div className="p-12 card-elevated" style={{ borderRadius: 3 }} role="status">
                 <span className="badge-label badge-signal mb-6 inline-block">TICKET · RECEIVED</span>
                 <h3 className="heading-display text-3xl text-[hsl(var(--reservoir))] mb-3">Request logged</h3>
                 <div className="gauge-ticks max-w-xs mb-4" />
                 <p className="text-muted-foreground">Our team will reach out within 24 hours to discuss station count, placement, and delivery for your event.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="p-8 bg-card border border-border" style={{ borderRadius: 3 }}>
+              <form onSubmit={handleSubmit} noValidate className="p-8 card-elevated" style={{ borderRadius: 3 }}>
                 <div className="grid sm:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label htmlFor="quote-name" className={labelClass}>Name</label>

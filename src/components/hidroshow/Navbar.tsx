@@ -5,6 +5,7 @@ import hidroshowLogo from "@/assets/hidroshow-logo.png";
 const NAV_LINKS: { label: string; id: string }[] = [
   { label: "Problem", id: "problem" },
   { label: "Solution", id: "solution" },
+  { label: "About", id: "about" },
   { label: "Impact", id: "impact" },
   { label: "Contact", id: "contact" },
 ];

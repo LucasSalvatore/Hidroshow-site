@@ -44,7 +44,7 @@ export default function SocialProof() {
         <div className="grid md:grid-cols-2 gap-6">
           {TESTIMONIALS.map((t, i) => (
             <AnimSection key={t.event} delay={0.1 + i * 0.08}>
-              <div className="p-8 bg-card border border-border h-full flex flex-col" style={{ borderRadius: 3 }}>
+              <div className="p-8 card-elevated h-full flex flex-col" style={{ borderRadius: 3 }}>
                 <span className="badge-label badge-signal mb-6 inline-flex self-start">PLACEHOLDER</span>
                 <blockquote className="text-foreground text-base leading-relaxed flex-1 m-0">{t.quote}</blockquote>
                 <div className="gauge-ticks my-4" />

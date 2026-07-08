@@ -39,7 +39,7 @@ export default function Problem() {
             { num: gained.toLocaleString(), unit: "M", label: "People gained access", sub: "2015–2024" },
           ].map((s, i) => (
             <AnimSection key={s.label} delay={0.1 + i * 0.08}>
-              <div className="p-6 bg-card border border-border card-hover h-full" style={{ borderRadius: 3 }}>
+              <div className="p-6 card-elevated h-full" style={{ borderRadius: 3 }}>
                 <div className="flex items-baseline gap-1">
                   <span className="stat-number text-4xl md:text-5xl tabular-nums">{s.num}</span>
                   <span className="font-mono-num text-xl md:text-2xl font-medium text-[hsl(var(--tap))]">{s.unit}</span>

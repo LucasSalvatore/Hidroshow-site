@@ -3,6 +3,7 @@ import hidroshowLogo from "@/assets/hidroshow-logo.png";
 const FOOTER_NAV = [
   { label: "Problem", id: "problem" },
   { label: "Solution", id: "solution" },
+  { label: "About", id: "about" },
   { label: "Impact", id: "impact" },
   { label: "Contact", id: "contact" },
 ];
