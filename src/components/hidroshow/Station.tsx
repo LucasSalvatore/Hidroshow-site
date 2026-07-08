@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import AnimSection, { useInView } from "./AnimSection";
-import { usePrefersReducedMotion } from "./useCountUp";
 import blueprintImg from "@/assets/station-blueprint.jpg";
 import fieldImg from "@/assets/stations-outdoor.jpg";
 
@@ -43,7 +42,7 @@ const SPECS = [
 ];
 
 export default function Station() {
-  const reduced = usePrefersReducedMotion();
+
 
   return (
     <section
