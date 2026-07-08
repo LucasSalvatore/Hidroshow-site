@@ -58,7 +58,7 @@ export default function About() {
               <span className="badge-label badge-signal mb-3 inline-block">RECOGNITION</span>
               <h4 className="heading-display text-lg text-[hsl(var(--reservoir))]">3rd Place · Social Entrepreneurship Poster Competition</h4>
               <p className="text-muted-foreground text-sm mt-2 leading-relaxed">
-                Business concept recognized and approved by faculty at Montclair State University's 2026 Social Entrepreneurship Poster Competition.
+                Business concept recognized and approved by faculty at the Lucan Company 2026 Social Entrepreneurship Poster Competition.
               </p>
             </div>
           </AnimSection>
