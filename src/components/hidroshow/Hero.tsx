@@ -1,7 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-waterdrop.jpg";
-import heroVideo from "@/assets/hero-waterdrop.mp4.asset.json";
+import heroVideo1 from "@/assets/hero-waterdrop-1.mp4.asset.json";
+import heroVideo2 from "@/assets/hero-waterdrop-2.mp4.asset.json";
+import heroVideo3 from "@/assets/hero-waterdrop-3.mp4.asset.json";
+
+const HERO_CLIPS = [heroVideo1.url, heroVideo2.url, heroVideo3.url];
+const MIN_CYCLE_MS = 12000;
 
 export default function Hero() {
   const [count, setCount] = useState(0);
