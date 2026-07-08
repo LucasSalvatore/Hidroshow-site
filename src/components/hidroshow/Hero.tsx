@@ -36,6 +36,10 @@ export default function Hero() {
     if (transitioningRef.current) return;
     transitioningRef.current = true;
 
+    // Start the incoming clip from its first frame so the crossfade is clean
+    const incomingVideo = showA ? videoB.current : videoA.current;
+    if (incomingVideo) incomingVideo.currentTime = 0;
+
     // Crossfade to the preloaded inactive player
     setShowA((s) => !s);
 
@@ -59,18 +63,21 @@ export default function Hero() {
 
   const handleEnded = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
     const activeVideo = showA ? videoA.current : videoB.current;
-    // Ignore ended events from the hidden preloaded player
-    if (e.currentTarget !== activeVideo) return;
+
+    if (e.currentTarget !== activeVideo) {
+      // The hidden preloader ended; keep it playing from the start so it is always ready
+      e.currentTarget.currentTime = 0;
+      e.currentTarget.play().catch(() => {});
+      return;
+    }
 
     const elapsed = Date.now() - cycleStartRef.current;
     if (elapsed >= MIN_CYCLE_MS) {
       doTransition();
     } else {
       // Replay the current clip until the minimum display time is met
-      if (activeVideo) {
-        activeVideo.currentTime = 0;
-        activeVideo.play().catch(() => {});
-      }
+      e.currentTarget.currentTime = 0;
+      e.currentTarget.play().catch(() => {});
     }
   }, [doTransition, showA]);
 
@@ -103,7 +110,6 @@ export default function Hero() {
         autoPlay
         muted
         playsInline
-        loop
         preload="auto"
         onEnded={handleEnded}
         aria-hidden
@@ -116,7 +122,6 @@ export default function Hero() {
         autoPlay
         muted
         playsInline
-        loop
         preload="auto"
         onEnded={handleEnded}
         aria-hidden
