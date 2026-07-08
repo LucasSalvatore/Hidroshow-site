@@ -28,12 +28,22 @@ export default function SystemCapacity() {
   const attendees = useCountUp(50000, inView);
   const foodGrade = useCountUp(100, inView);
 
+  // Manual toggle: 'auto' (crossfade) | 'reservoir' | 'glow'
+  const [bgMode, setBgMode] = useState<"auto" | "reservoir" | "glow">("auto");
+  const [paused, setPaused] = useState(false);
+
   return (
     <section
       id="capacity"
       ref={ref}
-      className="section-padding relative overflow-hidden capacity-alt-bg"
+      className={`section-padding relative overflow-hidden capacity-alt-bg capacity-mode-${bgMode}${paused ? " capacity-paused" : ""}`}
       style={{ background: "hsl(var(--reservoir))", color: "hsl(var(--reservoir-foreground))" }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node)) setPaused(false);
+      }}
     >
       {/* Alternating background layers: gradient <-> image glow */}
       <div className="capacity-alt-layer capacity-alt-gradient" aria-hidden />
@@ -42,6 +52,43 @@ export default function SystemCapacity() {
         aria-hidden
         style={{ backgroundImage: `linear-gradient(90deg, hsl(198 45% 14% / 0.92) 0%, hsl(198 45% 14% / 0.75) 40%, hsl(198 45% 14% / 0.55) 100%), url(${heroImg})` }}
       />
+
+      {/* Manual background toggle */}
+      <div
+        className="absolute top-4 right-4 z-20 flex items-center gap-1 p-1 rounded-sm"
+        role="radiogroup"
+        aria-label="Section background"
+        style={{
+          background: "hsl(198 45% 8% / 0.5)",
+          border: "1px solid hsl(38 24% 92% / 0.2)",
+          backdropFilter: "blur(6px)",
+        }}
+      >
+        {([
+          { id: "auto", label: "Auto" },
+          { id: "reservoir", label: "Reservoir" },
+          { id: "glow", label: "Glow" },
+        ] as const).map((opt) => (
+          <button
+            key={opt.id}
+            type="button"
+            role="radio"
+            aria-checked={bgMode === opt.id}
+            onClick={() => setBgMode(opt.id)}
+            className="font-mono-num text-[10px] tracking-[0.15em] uppercase px-2.5 py-1 rounded-sm transition-colors"
+            style={{
+              background: bgMode === opt.id ? "hsl(var(--tap))" : "transparent",
+              color:
+                bgMode === opt.id
+                  ? "hsl(var(--reservoir-foreground))"
+                  : "hsl(38 24% 92% / 0.7)",
+            }}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+
       <div className="relative z-10" style={{ maxWidth: 1200, margin: "0 auto" }}>
         <AnimSection className="flex flex-wrap items-center justify-between gap-4 mb-10">
           <div className="flex items-center gap-3">

@@ -270,9 +270,20 @@ html { scroll-behavior: smooth; }
   55%, 95%  { opacity: 1; }
   100%      { opacity: 0; }
 }
+/* Pause crossfade on hover/focus (auto mode only) */
+.capacity-mode-auto.capacity-paused .capacity-alt-gradient,
+.capacity-mode-auto.capacity-paused .capacity-alt-image {
+  animation-play-state: paused;
+}
+/* Manual override modes: freeze one layer visible */
+.capacity-mode-reservoir .capacity-alt-gradient { animation: none; opacity: 1; }
+.capacity-mode-reservoir .capacity-alt-image    { animation: none; opacity: 0; }
+.capacity-mode-glow      .capacity-alt-gradient { animation: none; opacity: 0; }
+.capacity-mode-glow      .capacity-alt-image    { animation: none; opacity: 1; }
+
 @media (prefers-reduced-motion: reduce) {
-  .capacity-alt-gradient { opacity: 1; animation: none; }
-  .capacity-alt-image { opacity: 0; animation: none; }
+  .capacity-mode-auto .capacity-alt-gradient { opacity: 1; animation: none; }
+  .capacity-mode-auto .capacity-alt-image { opacity: 0; animation: none; }
 }
 
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import heroImg from "@/assets/hero-festival.jpg";
+import heroImg from "@/assets/hero-dripping.jpg";
 
 export default function Hero() {
   const [count, setCount] = useState(0);
