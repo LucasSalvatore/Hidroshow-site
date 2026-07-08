@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import dropImg from "@/assets/hero-waterdrop.jpg";
-import festivalImg from "@/assets/hero-festival.jpg";
 import AnimSection from "./AnimSection";
 import { useInView } from "./AnimSection";
 
@@ -33,19 +31,9 @@ export default function SystemCapacity() {
     <section
       id="capacity"
       ref={ref}
-      className="section-padding relative overflow-hidden"
-      style={{ background: "hsl(var(--reservoir))", color: "hsl(var(--reservoir-foreground))" }}
+      className="section-padding relative overflow-hidden -mt-32 md:-mt-40"
+      style={{ color: "hsl(var(--reservoir-foreground))" }}
     >
-      {/* Static water-drop backdrop */}
-      <div
-        aria-hidden
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `linear-gradient(90deg, hsl(198 45% 14% / 0.94) 0%, hsl(198 45% 14% / 0.78) 50%, hsl(198 45% 14% / 0.6) 100%), url(${dropImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
 
       <div className="relative z-10" style={{ maxWidth: 1200, margin: "0 auto" }}>
 
