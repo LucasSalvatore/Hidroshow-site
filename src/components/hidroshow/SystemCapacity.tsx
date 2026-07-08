@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import dropImg from "@/assets/hero-waterdrop.jpg";
-import festivalImg from "@/assets/hero-festival.jpg";
 import AnimSection from "./AnimSection";
 import { useInView } from "./AnimSection";
 
@@ -33,17 +31,16 @@ export default function SystemCapacity() {
     <section
       id="capacity"
       ref={ref}
-      className="section-padding relative overflow-hidden"
-      style={{ background: "hsl(var(--reservoir))", color: "hsl(var(--reservoir-foreground))" }}
+      className="section-padding relative overflow-hidden -mt-32 md:-mt-40"
+      style={{ color: "hsl(var(--reservoir-foreground))" }}
     >
-      {/* Static water-drop backdrop */}
+      {/* Scrim that fades from transparent (over the hero video) to dark (below it) */}
       <div
         aria-hidden
         className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `linear-gradient(90deg, hsl(198 45% 14% / 0.94) 0%, hsl(198 45% 14% / 0.78) 50%, hsl(198 45% 14% / 0.6) 100%), url(${dropImg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
+          background:
+            "linear-gradient(180deg, hsl(198 45% 14% / 0.35) 0%, hsl(198 45% 14% / 0.82) 35%, hsl(198 45% 14% / 0.96) 100%)",
         }}
       />
 
@@ -114,29 +111,6 @@ export default function SystemCapacity() {
             </AnimSection>
           ))}
         </div>
-
-        {/* Festival image strip — field context, full-bleed within container */}
-        <AnimSection delay={0.4} className="mt-20">
-          <div className="relative overflow-hidden" style={{ borderRadius: 2 }}>
-            <img
-              src={festivalImg}
-              alt="Festival crowd at a live event served by Hidroshow stations"
-              loading="lazy"
-              className="w-full h-40 md:h-56 lg:h-64 object-cover"
-              style={{ filter: "saturate(0.9)" }}
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  "linear-gradient(90deg, hsl(198 45% 14% / 0.65) 0%, hsl(198 45% 14% / 0.15) 45%, hsl(198 45% 14% / 0.55) 100%)",
-              }}
-            />
-            <div className="absolute inset-0 flex items-end p-5 md:p-7">
-              <span className="badge-label badge-on-dark">DEPLOYED · EVENTS NATIONWIDE</span>
-            </div>
-          </div>
-        </AnimSection>
       </div>
     </section>
   );

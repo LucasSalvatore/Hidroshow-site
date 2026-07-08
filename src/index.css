@@ -239,44 +239,6 @@ html { scroll-behavior: smooth; }
 }
 .animate-fade-up { animation: fade-up 0.6s ease-out both; }
 
-/* ===== SystemCapacity alternating background ===== */
-.capacity-alt-bg { isolation: isolate; }
-.capacity-alt-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-size: cover;
-  background-position: center;
-  will-change: opacity;
-}
-.capacity-alt-a { animation: capacity-fade-a 14s ease-in-out infinite; }
-.capacity-alt-b { animation: capacity-fade-b 14s ease-in-out infinite; }
-@keyframes capacity-fade-a {
-  0%, 45%   { opacity: 1; }
-  55%, 95%  { opacity: 0; }
-  100%      { opacity: 1; }
-}
-@keyframes capacity-fade-b {
-  0%, 45%   { opacity: 0; }
-  55%, 95%  { opacity: 1; }
-  100%      { opacity: 0; }
-}
-/* Pause crossfade on hover/focus (auto mode only) */
-.capacity-mode-auto.capacity-paused .capacity-alt-a,
-.capacity-mode-auto.capacity-paused .capacity-alt-b {
-  animation-play-state: paused;
-}
-/* Manual override modes: freeze one layer visible */
-.capacity-mode-festival .capacity-alt-a { animation: none; opacity: 1; }
-.capacity-mode-festival .capacity-alt-b { animation: none; opacity: 0; }
-.capacity-mode-drop     .capacity-alt-a { animation: none; opacity: 0; }
-.capacity-mode-drop     .capacity-alt-b { animation: none; opacity: 1; }
-
-@media (prefers-reduced-motion: reduce) {
-  .capacity-mode-auto .capacity-alt-a { opacity: 1; animation: none; }
-  .capacity-mode-auto .capacity-alt-b { opacity: 0; animation: none; }
-}
 
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
