@@ -81,7 +81,7 @@ export default function About() {
                 alt="Festival crowd silhouetted against warm stage lights"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-72 md:h-96 object-cover"
+                className="w-full h-80 md:h-[28rem] lg:h-[32rem] object-cover"
               />
               <div
                 className="pointer-events-none absolute inset-0"
