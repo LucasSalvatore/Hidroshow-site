@@ -51,7 +51,7 @@ export default function About() {
               </div>
 
               <div className="mt-6 overflow-hidden border border-border" style={{ borderRadius: 3 }}>
-                <img src={teamImg} alt="Hidroshow founding team at the 2026 Social Entrepreneurship Poster Competition" loading="lazy" decoding="async" className="w-full h-auto object-cover" />
+                <img src={teamImg} alt="Hidroshow founding team at the 2026 Social Entrepreneurship Poster Competition" loading="lazy" decoding="async" className="w-full h-72 md:h-96 object-cover" />
               </div>
             </div>
           </AnimSection>
@@ -81,7 +81,7 @@ export default function About() {
                 alt="Festival crowd silhouetted against warm stage lights"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-72 md:h-96 object-cover"
+                className="w-full h-80 md:h-[28rem] lg:h-[32rem] object-cover"
               />
               <div
                 className="pointer-events-none absolute inset-0"
@@ -97,7 +97,7 @@ export default function About() {
           </AnimSection>
         </div>
 
-        <AnimSection className="mt-10">
+        <AnimSection className="mt-6">
           <div className="p-8 md:p-10 border" style={{ borderRadius: 3, borderColor: "hsl(var(--signal) / 0.4)", borderLeft: "3px solid hsl(var(--signal))", background: "hsl(var(--signal) / 0.06)" }}>
             <div className="flex flex-col md:flex-row md:items-start md:gap-10 gap-4">
               <span className="badge-label badge-signal inline-block shrink-0">RECOGNITION</span>
@@ -106,7 +106,7 @@ export default function About() {
                   Won &amp; recognized as an approved business concept
                 </h4>
                 <p className="text-muted-foreground text-sm md:text-base mt-3 leading-relaxed max-w-3xl">
-                  This recognition laid the foundation of Hidroshow, which operates under the Lucan Company 2026.
+                  This recognition laid the foundation of Hidroshow, operating under the Lucan Company established on 2026.
                 </p>
               </div>
             </div>
@@ -114,7 +114,7 @@ export default function About() {
         </AnimSection>
       </div>
 
-      <div className="mt-24 relative left-1/2 -translate-x-1/2 w-screen overflow-hidden">
+      <div className="mt-10 relative left-1/2 -translate-x-1/2 w-screen overflow-hidden">
         <AnimSection>
           <div className="relative">
             <img
