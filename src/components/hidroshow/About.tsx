@@ -51,7 +51,7 @@ export default function About() {
               </div>
 
               <div className="mt-6 overflow-hidden border border-border" style={{ borderRadius: 3 }}>
-                <img src={teamImg} alt="Hidroshow founding team at the 2026 Social Entrepreneurship Poster Competition" loading="lazy" decoding="async" className="w-full h-auto object-cover" />
+                <img src={teamImg} alt="Hidroshow founding team at the 2026 Social Entrepreneurship Poster Competition" loading="lazy" decoding="async" className="w-full h-72 md:h-96 object-cover" />
               </div>
             </div>
           </AnimSection>
