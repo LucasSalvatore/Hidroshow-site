@@ -1,4 +1,7 @@
 import AnimSection from "./AnimSection";
+import festivalImg from "@/assets/hero-festival.jpg";
+import crowdImg from "@/assets/crowd-festival.jpg";
+
 
 export default function Problem() {
   const stats = [
@@ -18,6 +21,27 @@ export default function Problem() {
             Limited access to drinking water puts thousands at risk during large-scale events. Current solutions fail attendees at the volumes that matter.
           </p>
           <div className="gauge-ticks max-w-sm mx-auto mt-8" />
+        </AnimSection>
+
+        <AnimSection className="mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="relative overflow-hidden" style={{ borderRadius: 3, aspectRatio: "4 / 3" }}>
+              <img src={festivalImg} alt="Festival crowd at night with stage lights" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(198 45% 8% / 0.15) 0%, hsl(198 45% 8% / 0.75) 100%)" }} />
+              <div className="absolute left-5 bottom-5 right-5">
+                <span className="badge-label badge-on-dark">NIGHT · MAIN STAGE</span>
+                <p className="heading-display text-[hsl(var(--reservoir-foreground))] text-xl md:text-2xl mt-3 leading-tight">80,000 in the crowd. Zero refill points.</p>
+              </div>
+            </div>
+            <div className="relative overflow-hidden" style={{ borderRadius: 3, aspectRatio: "4 / 3" }}>
+              <img src={crowdImg} alt="Daytime festival crowd" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, hsl(198 45% 8% / 0.15) 0%, hsl(198 45% 8% / 0.75) 100%)" }} />
+              <div className="absolute left-5 bottom-5 right-5">
+                <span className="badge-label badge-on-dark">DAY · PEAK HEAT</span>
+                <p className="heading-display text-[hsl(var(--reservoir-foreground))] text-xl md:text-2xl mt-3 leading-tight">1L per person, per hour. Bottled water can't keep up.</p>
+              </div>
+            </div>
+          </div>
         </AnimSection>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
