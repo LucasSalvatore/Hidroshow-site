@@ -239,7 +239,26 @@ html { scroll-behavior: smooth; }
 }
 .animate-fade-up { animation: fade-up 0.6s ease-out both; }
 
+@keyframes headline-glow {
+  0%, 100% { text-shadow: 0 0 0 transparent; }
+  50% { text-shadow: 0 0 28px hsl(var(--tap) / 0.35); }
+}
+.animate-headline-glow { animation: headline-glow 3s ease-in-out infinite; }
 
+@keyframes gauge-scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+.stat-card {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+.stat-bar {
+  transform-origin: left;
+}
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: hsl(var(--secondary)); }
