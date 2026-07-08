@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import heroImg from "@/assets/hero-waterdrop.jpg";
+import heroVideo from "@/assets/hero-waterdrop.mp4.asset.json";
 
 export default function Hero() {
   const [count, setCount] = useState(0);
@@ -17,18 +19,30 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-[hsl(var(--reservoir))]">
+      {/* Full-bleed animated water drop */}
+      <video
+        src={heroVideo.url}
+        poster={heroImg}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden
+        className="absolute inset-0 w-full h-full object-cover object-center"
+      />
+
       {/* Dark scrim from left */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0"
         style={{
           background:
             "linear-gradient(90deg, hsl(198 45% 8% / 0.95) 0%, hsl(198 45% 10% / 0.85) 40%, hsl(198 45% 12% / 0.55) 70%, hsl(198 45% 14% / 0.25) 100%)",
         }}
       />
       {/* Bottom vignette for text contrast on small screens */}
-      <div className="absolute inset-0 md:hidden pointer-events-none" style={{ background: "linear-gradient(180deg, hsl(198 45% 10% / 0.55) 0%, hsl(198 45% 10% / 0.85) 100%)" }} />
-
+      <div className="absolute inset-0 md:hidden" style={{ background: "linear-gradient(180deg, hsl(198 45% 10% / 0.55) 0%, hsl(198 45% 10% / 0.85) 100%)" }} />
 
       <div className="relative w-full" style={{ maxWidth: 1280, margin: "0 auto", padding: "140px 24px 220px" }}>
         <div className="max-w-2xl text-[hsl(var(--reservoir-foreground))]">

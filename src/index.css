@@ -245,12 +245,3 @@ html { scroll-behavior: smooth; }
 ::-webkit-scrollbar-track { background: hsl(var(--secondary)); }
 ::-webkit-scrollbar-thumb { background: hsl(var(--reservoir) / 0.4); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: hsl(var(--reservoir) / 0.7); }
-
-@keyframes backdropCycle {
-  0%    { opacity: 0; }
-  5%    { opacity: 1; }
-  25%   { opacity: 1; }
-  30%   { opacity: 0; }
-  100%  { opacity: 0; }
-}
-.backdrop-paused > div { animation-play-state: paused !important; }
