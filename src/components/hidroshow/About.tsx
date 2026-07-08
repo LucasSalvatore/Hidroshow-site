@@ -70,7 +70,7 @@ export default function About() {
                   { code: "03", title: "Eco-Conscious Organizers", desc: "Events pursuing zero-waste or sustainability certifications." },
                   { code: "04", title: "Corporate & Public Events", desc: "Brand-conscious organizers who value sponsorship visibility." },
                 ].map((item) => (
-                  <div key={item.code} className="flex gap-5 p-5 bg-card border border-border card-hover flex-1" style={{ borderRadius: 3 }}>
+                  <div key={item.code} className="flex gap-5 p-5 bg-card border border-border card-hover" style={{ borderRadius: 3 }}>
                     <span className="font-mono-num text-2xl text-[hsl(var(--tap))] leading-none">{item.code}</span>
                     <div>
                       <h4 className="heading-display text-base text-[hsl(var(--reservoir))]">{item.title}</h4>
@@ -79,7 +79,7 @@ export default function About() {
                   </div>
                 ))}
 
-                <div className="overflow-hidden border border-border relative flex-1 min-h-[12rem]" style={{ borderRadius: 3 }}>
+                <div className="overflow-hidden border border-border relative flex-1 min-h-[20rem]" style={{ borderRadius: 3 }}>
                   <img
                     src={crowdVerticalImg.url}
                     alt="Festival crowd silhouetted against warm stage lights"
