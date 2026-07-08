@@ -54,14 +54,6 @@ export default function About() {
                 <img src={teamImg} alt="Hidroshow founding team at the 2026 Social Entrepreneurship Poster Competition" loading="lazy" decoding="async" className="w-full h-auto object-cover" />
               </div>
             </div>
-
-            <div className="mt-5 p-6 border" style={{ borderRadius: 3, borderColor: "hsl(var(--signal) / 0.4)", borderLeft: "3px solid hsl(var(--signal))", background: "hsl(var(--signal) / 0.06)" }}>
-              <span className="badge-label badge-signal mb-3 inline-block">RECOGNITION</span>
-              <h4 className="heading-display text-lg text-[hsl(var(--reservoir))]">3rd Place · Social Entrepreneurship Poster Competition</h4>
-              <p className="text-muted-foreground text-sm mt-2 leading-relaxed">
-                Business concept recognized and approved by faculty at the Lucan Company 2026 Social Entrepreneurship Poster Competition.
-              </p>
-            </div>
           </AnimSection>
 
           <AnimSection delay={0.15}>
