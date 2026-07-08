@@ -40,7 +40,7 @@ export default function SystemCapacity() {
       <div className="capacity-bg-layer capacity-bg-orb capacity-bg-orb-1" aria-hidden />
       <div className="capacity-bg-layer capacity-bg-orb capacity-bg-orb-2" aria-hidden />
       <div className="capacity-bg-layer capacity-bg-scan" aria-hidden />
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <div className="relative z-10" style={{ maxWidth: 1200, margin: "0 auto" }}>
         <AnimSection className="flex flex-wrap items-center justify-between gap-4 mb-10">
           <div className="flex items-center gap-3">
             <span
