@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import heroImg from "@/assets/hero-dripping.jpg";
+import heroImg from "@/assets/hero-waterdrop.jpg";
+import heroVideo from "@/assets/hero-waterdrop.mp4.asset.json";
 
 export default function Hero() {
   const [count, setCount] = useState(0);
@@ -19,15 +20,19 @@ export default function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-[hsl(var(--reservoir))]">
-      {/* Full-bleed photo */}
-      <img
-        src={heroImg}
-        alt="Festival crowd at sunset"
+      {/* Full-bleed animated water drop */}
+      <video
+        src={heroVideo.url}
+        poster={heroImg}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden
         className="absolute inset-0 w-full h-full object-cover object-center"
-        fetchPriority="high"
-        loading="eager"
-        decoding="async"
       />
+
       {/* Dark scrim from left */}
       <div
         className="absolute inset-0"
