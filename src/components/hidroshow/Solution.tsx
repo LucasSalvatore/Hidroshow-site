@@ -4,74 +4,85 @@ import stationImg from "@/assets/stations-outdoor.jpg";
 
 export default function Solution() {
   const features = [
-    { icon: "💧", title: "400–500L Capacity", desc: "Large-volume tanks refillable on-site, serving thousands without interruption." },
-    { icon: "⚡", title: "Multiple Taps", desc: "Multi-tap design eliminates lines and gets water to people faster." },
-    { icon: "🏗️", title: "Food-Grade Materials", desc: "All materials are certified food-grade, ensuring safe drinking water." },
-    { icon: "🎨", title: "Brand Customization", desc: "Full wrap branding for sponsors and event organizers." },
-    { icon: "♻️", title: "Zero Single-Use Plastic", desc: "Encourages reusable bottles. Dramatically reduces event plastic waste." },
-    { icon: "📍", title: "Strategic Placement", desc: "Placed using crowd-flow data to maximize coverage and minimize congestion." },
+    { code: "01", title: "400–500 L capacity", desc: "Large-volume tanks refillable on-site, serving thousands without service interruption." },
+    { code: "02", title: "Multi-tap dispensing", desc: "Four-tap design eliminates queues and moves water to attendees faster." },
+    { code: "03", title: "Food-grade materials", desc: "All wetted surfaces are NSF-61 food-grade certified for safe drinking water." },
+    { code: "04", title: "Brand wrap system", desc: "Full-station branding for sponsors and event organizers." },
+    { code: "05", title: "Zero single-use plastic", desc: "Reusable bottle model. Removes bottled distribution from the event footprint." },
+    { code: "06", title: "Crowd-flow placement", desc: "Stations positioned using crowd-flow data to maximize coverage and reduce congestion." },
   ];
 
   return (
     <section id="solution" className="section-padding section-light">
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <AnimSection className="text-center mb-16">
-          <span className="badge-label mb-4 inline-block">OUR SOLUTION</span>
-          <h2 className="heading-section text-foreground">Hidroshow's System</h2>
-          <p className="text-muted-foreground text-lg mt-4 max-w-2xl mx-auto">
-            Durable, reusable, and customizable mobile hydration units — designed for scale, built for safety.
+        <AnimSection className="mb-16 max-w-3xl">
+          <span className="badge-label mb-5 inline-block">SYSTEM · SPEC SHEET</span>
+          <h2 className="heading-section text-[hsl(var(--reservoir))]">The Hidroshow Station</h2>
+          <p className="text-muted-foreground text-lg mt-4 max-w-2xl">
+            Durable, reusable, brandable mobile hydration units — engineered for scale, certified for safety.
           </p>
+          <div className="gauge-ticks max-w-sm mt-6" />
         </AnimSection>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
+          <div className="grid sm:grid-cols-2 gap-3">
             {features.map((f, i) => (
-              <AnimSection key={i} delay={i * 0.08}>
-                <div className="p-6 rounded-2xl bg-background shadow-sm border border-border card-hover cursor-default">
-                  <div className="text-3xl mb-3">{f.icon}</div>
-                  <h3 className="font-display font-bold text-foreground text-sm mb-2">{f.title}</h3>
-                  <p className="text-muted-foreground text-xs leading-relaxed">{f.desc}</p>
+              <AnimSection key={i} delay={i * 0.06}>
+                <div className="p-6 bg-card border border-border card-hover h-full" style={{ borderRadius: 3 }}>
+                  <span className="font-mono-num text-xs text-[hsl(var(--tap))] tracking-widest">{f.code}</span>
+                  <h3 className="heading-display text-base text-[hsl(var(--reservoir))] mt-2 mb-2">{f.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
                 </div>
               </AnimSection>
             ))}
           </div>
 
           <AnimSection delay={0.2}>
-            <div className="rounded-3xl overflow-hidden shadow-xl">
+            <div className="overflow-hidden border border-border" style={{ borderRadius: 3 }}>
               <img src={stationImg} alt="Hidroshow stations at outdoor event" loading="eager" decoding="async" className="w-full h-auto object-cover" />
             </div>
-            <div className="grid grid-cols-4 gap-3 mt-6">
-              {[["780mm", "Width"], ["1425mm", "Height"], ["500L", "Capacity"], ["4 Taps", "Per Unit"]].map(([val, label]) => (
-                <div key={label} className="text-center p-3 rounded-xl bg-background shadow-sm border border-border">
-                  <p className="stat-number text-lg">{val}</p>
-                  <p className="text-muted-foreground text-xs">{label}</p>
-                </div>
-              ))}
+            <div className="mt-4 p-5 border border-border bg-card" style={{ borderRadius: 3 }}>
+              <span className="badge-label mb-4 inline-block">UNIT DIMENSIONS</span>
+              <div className="gauge-ticks mb-4" />
+              <div className="grid grid-cols-4 gap-2">
+                {[["780", "mm", "Width"], ["1425", "mm", "Height"], ["500", "L", "Capacity"], ["04", "", "Taps"]].map(([val, unit, label]) => (
+                  <div key={label as string}>
+                    <div className="flex items-baseline gap-0.5">
+                      <span className="stat-number text-xl md:text-2xl">{val}</span>
+                      {unit && <span className="font-mono-num text-xs text-[hsl(var(--tap))]">{unit}</span>}
+                    </div>
+                    <p className="font-mono-num text-[10px] uppercase tracking-widest text-muted-foreground mt-1">{label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </AnimSection>
         </div>
 
         {/* SDGs */}
         <AnimSection className="mt-20">
-          <div className="text-center p-10 rounded-3xl bg-background shadow-sm border border-border">
-            <h3 className="font-display font-bold text-xl text-foreground mb-2">Our Impact</h3>
-            <p className="text-muted-foreground text-sm mb-8">Supporting Global Sustainability Goals</p>
-            <div className="flex justify-center gap-6 flex-wrap">
+          <div className="p-10 border border-border bg-card" style={{ borderRadius: 3 }}>
+            <span className="badge-label mb-4 inline-block">IMPACT · UN SDG ALIGNMENT</span>
+            <h3 className="heading-display text-2xl md:text-3xl text-[hsl(var(--reservoir))] mb-8">Three aligned goals</h3>
+            <div className="grid sm:grid-cols-3 gap-4">
               {[
-                { bg: "#4c9a2a", num: "3", title: "Good Health\n& Well-Being" },
-                { bg: "#26bde2", num: "6", title: "Clean Water\n& Sanitation" },
-                { bg: "#bf8b2e", num: "12", title: "Responsible\nConsumption" },
+                { num: "03", title: "Good Health\n& Well-Being" },
+                { num: "06", title: "Clean Water\n& Sanitation" },
+                { num: "12", title: "Responsible\nConsumption" },
               ].map(sdg => (
-                <div key={sdg.num} className="flex items-center gap-3 px-6 py-4 rounded-2xl" style={{ background: sdg.bg + "12", border: `2px solid ${sdg.bg}30` }}>
-                  <span className="font-display font-extrabold text-3xl" style={{ color: sdg.bg }}>{sdg.num}</span>
-                  <span className="text-xs text-left whitespace-pre-line text-foreground/70">{sdg.title}</span>
+                <div key={sdg.num} className="p-6 border border-border" style={{ borderRadius: 3, background: "hsl(var(--background))" }}>
+                  <div className="flex items-baseline gap-2 mb-3">
+                    <span className="stat-number text-4xl">{sdg.num}</span>
+                    <span className="font-mono-num text-[11px] uppercase tracking-[0.2em] text-[hsl(var(--tap))]">SDG</span>
+                  </div>
+                  <div className="gauge-ticks mb-3" />
+                  <p className="text-sm whitespace-pre-line text-foreground leading-snug">{sdg.title}</p>
                 </div>
               ))}
             </div>
           </div>
         </AnimSection>
 
-        {/* 3D Station Viewer */}
         <AnimSection>
           <StationViewer />
         </AnimSection>

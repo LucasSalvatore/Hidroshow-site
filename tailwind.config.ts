@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Lexend', 'sans-serif'],
+        display: ['"Big Shoulders Display"', 'Archivo', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
