@@ -10,6 +10,10 @@ const MIN_CYCLE_MS = 12000;
 
 export default function Hero() {
   const [count, setCount] = useState(0);
+  const [clipIdx, setClipIdx] = useState(0);
+  const cycleStartRef = useRef<number>(Date.now());
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   useEffect(() => {
     let start = 0;
     const end = 120000;
@@ -23,20 +27,41 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
+  // Advance to next clip once current has played for at least MIN_CYCLE_MS
+  const handleEnded = () => {
+    const elapsed = Date.now() - cycleStartRef.current;
+    if (elapsed >= MIN_CYCLE_MS) {
+      setClipIdx((i) => (i + 1) % HERO_CLIPS.length);
+      cycleStartRef.current = Date.now();
+    } else {
+      // replay same clip until threshold met
+      const v = videoRef.current;
+      if (v) { v.currentTime = 0; v.play().catch(() => {}); }
+    }
+  };
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (v) { v.load(); v.play().catch(() => {}); }
+  }, [clipIdx]);
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-[hsl(var(--reservoir))]">
-      {/* Full-bleed animated water drop */}
+      {/* Full-bleed animated water drop — cycles across similar clips */}
       <video
-        src={heroVideo.url}
+        ref={videoRef}
+        key={clipIdx}
+        src={HERO_CLIPS[clipIdx]}
         poster={heroImg}
         autoPlay
         muted
-        loop
         playsInline
         preload="auto"
+        onEnded={handleEnded}
         aria-hidden
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
+
 
       {/* Dark scrim from left */}
       <div
