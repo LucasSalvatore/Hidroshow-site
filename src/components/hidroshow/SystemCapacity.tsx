@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import heroImg from "@/assets/hero-festival.jpg";
+import festivalImg from "@/assets/hero-festival.jpg";
+import dropImg from "@/assets/hero-waterdrop.jpg";
 import AnimSection from "./AnimSection";
 import { useInView } from "./AnimSection";
 
