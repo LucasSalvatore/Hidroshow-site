@@ -1,6 +1,5 @@
 import AnimSection from "./AnimSection";
 import StationViewer from "./StationViewer";
-import stationImg from "@/assets/stations-outdoor.jpg";
 
 export default function Solution() {
   const features = [
@@ -24,27 +23,26 @@ export default function Solution() {
           <div className="gauge-ticks max-w-sm mt-6" />
         </AnimSection>
 
-        <div className="grid lg:grid-cols-2 gap-10 items-start">
-          <div className="grid sm:grid-cols-2 gap-3">
-            {features.map((f, i) => (
-              <AnimSection key={i} delay={i * 0.06}>
-                <div className="p-6 bg-card border border-border card-hover h-full" style={{ borderRadius: 3 }}>
-                  <span className="font-mono-num text-xs text-[hsl(var(--tap))] tracking-widest">{f.code}</span>
-                  <h3 className="heading-display text-base text-[hsl(var(--reservoir))] mt-2 mb-2">{f.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
-                </div>
-              </AnimSection>
-            ))}
-          </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {features.map((f, i) => (
+            <AnimSection key={i} delay={i * 0.06}>
+              <div className="p-6 bg-card border border-border card-hover h-full" style={{ borderRadius: 3 }}>
+                <span className="font-mono-num text-xs text-[hsl(var(--tap))] tracking-widest">{f.code}</span>
+                <h3 className="heading-display text-base text-[hsl(var(--reservoir))] mt-2 mb-2">{f.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
+              </div>
+            </AnimSection>
+          ))}
+        </div>
 
-          <AnimSection delay={0.2}>
-            <div className="overflow-hidden border border-border" style={{ borderRadius: 3 }}>
-              <img src={stationImg} alt="Hidroshow stations at outdoor event" loading="eager" decoding="async" className="w-full h-auto object-cover" />
-            </div>
-            <div className="mt-4 p-5 border border-border bg-card" style={{ borderRadius: 3 }}>
-              <span className="badge-label mb-4 inline-block">UNIT DIMENSIONS</span>
-              <div className="gauge-ticks mb-4" />
-              <div className="grid grid-cols-4 gap-2">
+        <AnimSection delay={0.2} className="mt-10">
+          <div className="p-6 border border-border bg-card" style={{ borderRadius: 3 }}>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div>
+                <span className="badge-label mb-4 inline-block">UNIT DIMENSIONS</span>
+                <div className="gauge-ticks max-w-xs mt-4" />
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-10">
                 {[["780", "mm", "Width"], ["1425", "mm", "Height"], ["500", "L", "Capacity"], ["04", "", "Taps"]].map(([val, unit, label]) => (
                   <div key={label as string}>
                     <div className="flex items-baseline gap-0.5">
@@ -56,8 +54,8 @@ export default function Solution() {
                 ))}
               </div>
             </div>
-          </AnimSection>
-        </div>
+          </div>
+        </AnimSection>
 
         {/* SDGs */}
         <AnimSection className="mt-20">
