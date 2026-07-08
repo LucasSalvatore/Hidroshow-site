@@ -140,6 +140,17 @@ export default function Hero() {
       {/* Bottom vignette for text contrast on small screens */}
       <div className="absolute inset-0 md:hidden" style={{ background: "linear-gradient(180deg, hsl(198 45% 10% / 0.55) 0%, hsl(198 45% 10% / 0.85) 100%)" }} />
 
+      {/* Smooth fade into the next section (SystemCapacity uses hsl(198 45% 14%)) */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 pointer-events-none z-[2]"
+        style={{
+          height: "260px",
+          background:
+            "linear-gradient(180deg, hsl(198 45% 14% / 0) 0%, hsl(198 45% 14% / 0.55) 45%, hsl(198 45% 14% / 0.9) 80%, hsl(198 45% 14% / 1) 100%)",
+        }}
+      />
+
       <div className="relative w-full" style={{ maxWidth: 1280, margin: "0 auto", padding: "140px 24px 220px" }}>
         <div className="max-w-2xl text-[hsl(var(--reservoir-foreground))]">
           {/* Spec plate */}
