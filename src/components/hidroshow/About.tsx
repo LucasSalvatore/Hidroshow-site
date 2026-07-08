@@ -1,5 +1,5 @@
 import AnimSection from "./AnimSection";
-import noWaterImg from "@/assets/no-water-no-show.png.asset.json";
+import festivalImg from "@/assets/festival-panorama.jpg.asset.json";
 import teamImg from "@/assets/team-photo.jpg";
 
 export default function About() {
@@ -84,22 +84,25 @@ export default function About() {
 
           </AnimSection>
         </div>
-
-        <AnimSection className="mt-16">
-          <div
-            className="relative overflow-hidden border border-border"
-            style={{ borderRadius: 3, aspectRatio: "21 / 6" }}
-          >
-            <img
-              src={noWaterImg.url}
-              alt="Hidroshow · No Water, No Show — mobile hydration infrastructure for live events"
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </AnimSection>
       </div>
+
+      <AnimSection className="mt-24 relative w-screen left-1/2 -translate-x-1/2 overflow-hidden">
+        <img
+          src={festivalImg.url}
+          alt="Nighttime music festival crowd bathed in warm stage light"
+          loading="lazy"
+          decoding="async"
+          className="w-full h-[42vh] md:h-[56vh] object-cover"
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-24"
+          style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 100%)" }}
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
+          style={{ background: "linear-gradient(0deg, hsl(var(--background)) 0%, transparent 100%)" }}
+        />
+      </AnimSection>
     </section>
   );
 }
