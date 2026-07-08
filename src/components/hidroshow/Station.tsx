@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import AnimSection, { useInView } from "./AnimSection";
 import blueprintImg from "@/assets/station-blueprint.jpg";
 import concertBg from "@/assets/festival-panorama.jpg.asset.json";
-import fieldImg from "@/assets/stations-outdoor.jpg";
+import fieldImg from "@/assets/field-deployment.jpg";
 
 // three.js is ~800KB — load the 3D viewer only when this section nears the viewport.
 const StationViewer = lazy(() => import("./StationViewer"));
