@@ -2,17 +2,8 @@ import { ReactNode, useEffect } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-interface Props {
-  children: ReactNode;
-  title?: string;
-}
-
-export default function PageLayout({ children, title }: Props) {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
-    if (title) document.title = title;
-  }, [title]);
-
+export default function Layout({ children }: { children: ReactNode }) {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />

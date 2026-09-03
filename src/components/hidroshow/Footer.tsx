@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import hidroshowLogo from "@/assets/hidroshow-logo.png";
 
+const FOOTER_NAV = [
+  { label: "Problem", to: "/problem" },
+  { label: "Solution", to: "/solution" },
+  { label: "About", to: "/about" },
+  { label: "Impact", to: "/impact" },
+  { label: "Contact", to: "/contact" },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-[hsl(var(--reservoir))] text-[hsl(var(--reservoir-foreground))]" style={{ padding: "72px 2rem 32px" }}>
@@ -14,20 +22,23 @@ export default function Footer() {
               <span className="heading-display text-xl tracking-[0.15em]">HIDROSHOW</span>
             </div>
             <p className="text-sm leading-relaxed max-w-[280px]" style={{ color: "hsl(38 24% 92% / 0.6)" }}>
-              Mobile hydration infrastructure for large-scale live events. Measured delivery, food-grade certified.
+              Mobile hydration infrastructure for large-scale live events. Our mission: close the hydration gap at every large gathering with measured, low-waste water delivery.
             </p>
             <div className="mt-5 inline-flex">
-              <span className="badge-label badge-on-dark">MFG · NEW JERSEY · USA</span>
+              <span className="badge-label badge-on-dark">FOOD-GRADE MATERIALS</span>
             </div>
           </div>
 
           <div>
             <h4 className="font-mono-num text-[11px] tracking-[0.22em] mb-5" style={{ color: "hsl(38 24% 92% / 0.5)" }}>NAVIGATION</h4>
-            {["About", "Problem", "Solution", "Products", "Contact"].map(l => (
-              <Link key={l} to={`/${l.toLowerCase()}`}
+            {FOOTER_NAV.map(l => (
+              <Link
+                key={l.to}
+                to={l.to}
                 className="block text-sm mb-2.5 no-underline transition-colors"
-                style={{ color: "hsl(38 24% 92% / 0.7)" }}>
-                {l}
+                style={{ color: "hsl(38 24% 92% / 0.7)" }}
+              >
+                {l.label}
               </Link>
             ))}
           </div>
@@ -42,8 +53,6 @@ export default function Footer() {
           <div>
             <h4 className="font-mono-num text-[11px] tracking-[0.22em] mb-5" style={{ color: "hsl(38 24% 92% / 0.5)" }}>CONTACT</h4>
             <p className="font-mono-num text-sm mb-2.5" style={{ color: "hsl(38 24% 92% / 0.75)" }}>hello@hidroshow.com</p>
-            <p className="font-mono-num text-sm mb-2.5" style={{ color: "hsl(38 24% 92% / 0.75)" }}>+1 (555) 000-AGUA</p>
-            <p className="font-mono-num text-sm" style={{ color: "hsl(38 24% 92% / 0.75)" }}>Newark, NJ</p>
           </div>
         </div>
 
@@ -53,9 +62,9 @@ export default function Footer() {
           </p>
           <div className="flex gap-4">
             {["Instagram", "LinkedIn", "YouTube"].map(name => (
-              <a key={name} href="#" className="font-mono-num text-[11px] tracking-[0.18em] uppercase no-underline transition-colors" style={{ color: "hsl(38 24% 92% / 0.55)" }}>
+              <span key={name} className="font-mono-num text-[11px] tracking-[0.18em] uppercase" style={{ color: "hsl(38 24% 92% / 0.55)" }}>
                 {name}
-              </a>
+              </span>
             ))}
           </div>
         </div>

@@ -1,31 +1,26 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import hidroshowLogo from "@/assets/hidroshow-logo.png";
 
-const NAV_LINKS: { label: string; path: string }[] = [
-  { label: "About", path: "/about" },
-  { label: "Problem", path: "/problem" },
-  { label: "Solution", path: "/solution" },
-  { label: "Products", path: "/products" },
-  { label: "Contact", path: "/contact" },
+const NAV_LINKS: { label: string; to: string }[] = [
+  { label: "Problem", to: "/problem" },
+  { label: "Solution", to: "/solution" },
+  { label: "About", to: "/about" },
+  { label: "Impact", to: "/impact" },
+  { label: "Contact", to: "/contact" },
 ];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", h);
+    h();
+    window.addEventListener("scroll", h, { passive: true });
     return () => window.removeEventListener("scroll", h);
   }, []);
-
-  const go = (path: string) => {
-    setMenuOpen(false);
-    navigate(path);
-  };
 
   return (
     <nav
@@ -37,7 +32,7 @@ export default function Navbar() {
       }}
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "14px 24px" }} className="flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group" aria-label="HIDROSHOW home">
+        <Link to="/" className="flex items-center gap-3 group no-underline" aria-label="HIDROSHOW home">
           <img src={hidroshowLogo} alt="" className="h-14 md:h-16 w-auto object-contain" />
           <span className="heading-display text-[hsl(var(--reservoir-foreground))] text-xl md:text-2xl tracking-[0.15em]">
             HIDROSHOW
@@ -46,15 +41,13 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map(l => {
-            const active = pathname === l.path;
+            const active = pathname === l.to;
             return (
-              <button
-                key={l.path}
-                onClick={() => go(l.path)}
-                className="relative px-4 py-2 font-mono-num text-[11px] tracking-[0.18em] uppercase border-none cursor-pointer bg-transparent transition-colors"
-                style={{
-                  color: active ? "hsl(var(--tap))" : "hsl(38 24% 92% / 0.7)",
-                }}
+              <Link
+                key={l.to}
+                to={l.to}
+                className="relative px-4 py-2 font-mono-num text-[11px] tracking-[0.18em] uppercase no-underline transition-colors"
+                style={{ color: active ? "hsl(var(--tap))" : "hsl(38 24% 92% / 0.7)" }}
               >
                 {l.label}
                 {active && (
@@ -67,7 +60,7 @@ export default function Navbar() {
                     }}
                   />
                 )}
-              </button>
+              </Link>
             );
           })}
         </div>
@@ -75,11 +68,7 @@ export default function Navbar() {
         <Link
           to="/contact"
           className="hidden md:inline-flex items-center px-5 py-2.5 no-underline font-mono-num text-[11px] tracking-[0.18em] uppercase transition-colors"
-          style={{
-            background: "hsl(var(--tap))",
-            color: "hsl(var(--reservoir-foreground))",
-            borderRadius: 3,
-          }}
+          style={{ background: "hsl(var(--tap))", color: "hsl(var(--reservoir-foreground))", borderRadius: 3 }}
         >
           Request Quote
         </Link>
@@ -88,6 +77,7 @@ export default function Navbar() {
           className="md:hidden bg-transparent border-none cursor-pointer p-2 text-[hsl(var(--reservoir-foreground))]"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
             {menuOpen ? <path d="M6 6l12 12M6 18L18 6" /> : <path d="M3 7h18M3 12h18M3 17h18" />}
@@ -98,15 +88,24 @@ export default function Navbar() {
       {menuOpen && (
         <div className="md:hidden border-t border-[hsl(38_24%_92%/0.12)]" style={{ padding: "8px 24px 16px" }}>
           {NAV_LINKS.map(l => (
-            <button
-              key={l.path}
-              onClick={() => go(l.path)}
-              className="block w-full text-left px-2 py-3 font-mono-num text-xs tracking-[0.2em] uppercase border-none bg-transparent cursor-pointer"
-              style={{ color: pathname === l.path ? "hsl(var(--tap))" : "hsl(38 24% 92% / 0.8)" }}
+            <Link
+              key={l.to}
+              to={l.to}
+              onClick={() => setMenuOpen(false)}
+              className="block w-full text-left px-2 py-3 font-mono-num text-xs tracking-[0.2em] uppercase no-underline"
+              style={{ color: pathname === l.to ? "hsl(var(--tap))" : "hsl(38 24% 92% / 0.8)" }}
             >
               {l.label}
-            </button>
+            </Link>
           ))}
+          <Link
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
+            className="mt-2 inline-flex items-center px-5 py-2.5 no-underline font-mono-num text-[11px] tracking-[0.18em] uppercase"
+            style={{ background: "hsl(var(--tap))", color: "hsl(var(--reservoir-foreground))", borderRadius: 3 }}
+          >
+            Request Quote
+          </Link>
         </div>
       )}
     </nav>

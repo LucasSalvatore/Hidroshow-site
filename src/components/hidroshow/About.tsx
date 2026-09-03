@@ -1,7 +1,20 @@
 import AnimSection from "./AnimSection";
-import festivalImg from "@/assets/festival-panorama.jpg.asset.json";
-import crowdVerticalImg from "@/assets/concert-crowd-vertical.jpg.asset.json";
 import teamImg from "@/assets/team-photo.jpg";
+import crowdImg from "@/assets/crowd-festival.jpg";
+
+const TEAM = [
+  { name: "Pedro Justa", role: "CEO" },
+  { name: "Shery Imran", role: "COO & CFO" },
+  { name: "Lucas Salvatore", role: "CSO & CTO" },
+  { name: "Noah Mazard", role: "CRO & CMO" },
+];
+
+const MARKET = [
+  { code: "01", title: "Concerts & Music Festivals", desc: "30K–80K+ attendees per event. High heat, high energy, critical hydration demand." },
+  { code: "02", title: "Stadiums & Sports Venues", desc: "Recurring demand, long-term contracts, ideal for the venue partnership model." },
+  { code: "03", title: "Eco-Conscious Organizers", desc: "Events pursuing zero-waste or sustainability certifications." },
+  { code: "04", title: "Corporate & Public Events", desc: "Brand-conscious organizers who value sponsorship visibility." },
+];
 
 export default function About() {
   return (
@@ -9,68 +22,68 @@ export default function About() {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <AnimSection className="mb-16 max-w-3xl">
           <span className="badge-label mb-5 inline-block">DIVISION · ABOUT</span>
-          <h2 className="heading-section text-[hsl(var(--reservoir))] mb-5">Built for Live Event Infrastructure</h2>
+          <h2 className="heading-section text-[hsl(var(--reservoir))]">Built for Live Event Infrastructure</h2>
+          <p className="text-muted-foreground text-lg mt-4 max-w-2xl">
+            A small team building the hydration layer that large events have always been missing.
+          </p>
           <div className="gauge-ticks max-w-sm mt-6" />
         </AnimSection>
 
         <div className="grid lg:grid-cols-2 gap-10 items-stretch">
+          {/* Narrative column */}
           <AnimSection className="h-full">
             <div className="flex flex-col h-full gap-5">
-              <div className="p-8 bg-card border border-border flex-1" style={{ borderRadius: 3 }}>
-                <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-3">MISSION</h4>
+              <div className="p-8 card-elevated flex-1" style={{ borderRadius: 3 }}>
+                <h3 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-3">MISSION</h3>
                 <p className="text-foreground text-base leading-relaxed">
                   Eliminate the hydration gap at large-scale events by deploying mobile, sustainable water infrastructure that delivers free, clean water to every attendee — at the volumes real events demand.
                 </p>
               </div>
 
-              <div className="p-8 bg-card border border-border flex-1" style={{ borderRadius: 3 }}>
-                <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-3">VISION</h4>
+              <div className="p-8 card-elevated flex-1" style={{ borderRadius: 3 }}>
+                <h3 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-3">VISION</h3>
                 <p className="text-foreground text-base leading-relaxed">
-                  A live-events industry where no attendee suffers dehydration and every large gathering runs on a measurable, closed-loop water system.
+                  A live-events industry where no attendee suffers dehydration and every large gathering runs on a measurable, low-waste water system.
                 </p>
               </div>
 
-              <div className="p-8 bg-card border border-border flex-1 flex flex-col" style={{ borderRadius: 3 }}>
-                <h4 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-4">TEAM</h4>
-                <div className="grid grid-cols-2 gap-3">
-                  {[
-                    { name: "Pedro Justa", role: "CEO" },
-                    { name: "Shery Imran", role: "COO & CFO" },
-                    { name: "Lucas Salvatore", role: "CSO & CTO" },
-                    { name: "Noah Mazard", role: "CRO & CMO" },
-                  ].map(({ name, role }) => (
+              <div className="p-8 card-elevated flex-1 flex flex-col" style={{ borderRadius: 3 }}>
+                <h3 className="font-mono-num text-[11px] tracking-[0.22em] text-[hsl(var(--tap))] mb-4">TEAM</h3>
+                <div className="grid grid-cols-2 gap-x-5 gap-y-3 mb-6">
+                  {TEAM.map(({ name, role }) => (
                     <div key={name} className="flex items-center gap-3 py-2 border-t border-border">
-                      <span className="font-mono-num text-[10px] text-[hsl(var(--tap))] w-8">
+                      <span className="font-mono-num text-[10px] text-[hsl(var(--tap))] w-8 shrink-0">
                         {name.split(" ").map(n => n[0]).join("")}
                       </span>
                       <div className="flex flex-col">
-                        <span className="text-foreground text-sm font-medium">{name}</span>
+                        <span className="text-foreground text-sm font-medium leading-tight">{name}</span>
                         <span className="font-mono-num text-muted-foreground text-[10px] tracking-widest uppercase">{role}</span>
                       </div>
                     </div>
                   ))}
                 </div>
-
-                <div className="mt-6 overflow-hidden border border-border flex-1 min-h-0" style={{ borderRadius: 3 }}>
-                  <img src={teamImg} alt="Hidroshow founding team at the 2026 Social Entrepreneurship Poster Competition" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                <div className="overflow-hidden border border-border" style={{ borderRadius: 3 }}>
+                  <img
+                    src={teamImg}
+                    alt="Hidroshow founding team accepting recognition at the 2026 Social Entrepreneurship Poster Competition"
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-56 md:h-64 object-cover object-top"
+                  />
                 </div>
               </div>
             </div>
           </AnimSection>
 
-          <AnimSection delay={0.15} className="h-full">
+          {/* Market column */}
+          <AnimSection delay={0.12} className="h-full">
             <div className="flex flex-col h-full">
               <span className="badge-label mb-5 inline-block">TARGET MARKET</span>
               <h3 className="heading-display text-3xl md:text-4xl text-[hsl(var(--reservoir))] mb-6">Who We Serve</h3>
 
               <div className="flex flex-col gap-3 flex-1">
-                {[
-                  { code: "01", title: "Concerts & Music Festivals", desc: "30K–80K+ attendees per event. High heat, high energy, critical hydration demand." },
-                  { code: "02", title: "Stadiums & Sports Venues", desc: "Recurring demand, long-term contracts, ideal for the venue partnership model." },
-                  { code: "03", title: "Eco-Conscious Organizers", desc: "Events pursuing zero-waste or sustainability certifications." },
-                  { code: "04", title: "Corporate & Public Events", desc: "Brand-conscious organizers who value sponsorship visibility." },
-                ].map((item) => (
-                  <div key={item.code} className="flex gap-5 p-5 bg-card border border-border card-hover" style={{ borderRadius: 3 }}>
+                {MARKET.map(item => (
+                  <div key={item.code} className="flex gap-5 p-5 card-elevated" style={{ borderRadius: 3 }}>
                     <span className="font-mono-num text-2xl text-[hsl(var(--tap))] leading-none">{item.code}</span>
                     <div>
                       <h4 className="heading-display text-base text-[hsl(var(--reservoir))]">{item.title}</h4>
@@ -79,21 +92,18 @@ export default function About() {
                   </div>
                 ))}
 
-                <div className="overflow-hidden border border-border relative flex-1 min-h-[20rem]" style={{ borderRadius: 3 }}>
+                <div className="overflow-hidden border border-border relative flex-1 min-h-[18rem]" style={{ borderRadius: 3 }}>
                   <img
-                    src={crowdVerticalImg.url}
-                    alt="Festival crowd silhouetted against warm stage lights"
+                    src={crowdImg}
+                    alt="Festival crowd with the main stage in the distance"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover"
+                    className="img-cinematic w-full h-full object-cover"
                   />
-                  <div
-                    className="pointer-events-none absolute inset-0"
-                    style={{ background: "linear-gradient(180deg, transparent 55%, hsl(var(--reservoir) / 0.55) 100%)" }}
-                  />
+                  <div className="scrim-cinematic absolute inset-0" />
                   <div className="absolute bottom-5 left-5 right-5">
-                    <span className="badge-label badge-signal mb-2 inline-block">EVENT SCALE</span>
-                    <p className="font-mono-num text-[11px] tracking-[0.22em] uppercase" style={{ color: "hsl(38 24% 96%)" }}>
+                    <span className="badge-label badge-on-dark mb-2 inline-block">EVENT SCALE</span>
+                    <p className="font-mono-num text-[11px] tracking-[0.22em] uppercase text-on-image" style={{ color: "hsl(38 24% 96%)" }}>
                       30K – 80K+ attendees per deployment
                     </p>
                   </div>
@@ -103,41 +113,20 @@ export default function About() {
           </AnimSection>
         </div>
 
+        {/* Recognition */}
         <AnimSection className="mt-6">
-          <div className="p-8 md:p-10 border" style={{ borderRadius: 3, borderColor: "hsl(var(--signal) / 0.4)", borderLeft: "3px solid hsl(var(--signal))", background: "hsl(var(--signal) / 0.06)" }}>
+          <div className="p-8 md:p-10 card-elevated" style={{ borderRadius: 3, borderLeft: "3px solid hsl(var(--signal))" }}>
             <div className="flex flex-col md:flex-row md:items-start md:gap-10 gap-4">
               <span className="badge-label badge-signal inline-block shrink-0">RECOGNITION</span>
               <div>
                 <h4 className="heading-display text-xl md:text-2xl text-[hsl(var(--reservoir))]">
-                  Won &amp; recognized as an approved business concept
+                  Recognized as an approved business concept
                 </h4>
                 <p className="text-muted-foreground text-sm md:text-base mt-3 leading-relaxed max-w-3xl">
-                  This recognition laid the foundation of Hidroshow, operating under the Lucan Company established on 2026.
+                  Awarded at the 2026 Social Entrepreneurship Poster Competition. This recognition laid the foundation of Hidroshow, operating under the Lucan Company established in 2026.
                 </p>
               </div>
             </div>
-          </div>
-        </AnimSection>
-      </div>
-
-      <div className="mt-10 relative left-1/2 -translate-x-1/2 w-screen overflow-hidden">
-        <AnimSection>
-          <div className="relative">
-            <img
-              src={festivalImg.url}
-              alt="Nighttime music festival crowd bathed in warm stage light"
-              loading="lazy"
-              decoding="async"
-              className="w-full h-[42vh] md:h-[56vh] object-cover"
-            />
-            <div
-              className="pointer-events-none absolute inset-x-0 top-0 h-24"
-              style={{ background: "linear-gradient(180deg, hsl(var(--background)) 0%, transparent 100%)" }}
-            />
-            <div
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-24"
-              style={{ background: "linear-gradient(0deg, hsl(var(--background)) 0%, transparent 100%)" }}
-            />
           </div>
         </AnimSection>
       </div>

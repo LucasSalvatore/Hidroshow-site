@@ -1,10 +1,3 @@
-import PageLayout from "@/components/hidroshow/PageLayout";
+import Layout from "@/components/hidroshow/Layout";
 import About from "@/components/hidroshow/About";
-
-export default function AboutPage() {
-  return (
-    <PageLayout title="About — Hidroshow">
-      <About />
-    </PageLayout>
-  );
-}
+export default function AboutPage() { return <Layout><About /></Layout>; }
